@@ -1,0 +1,5 @@
+package application.Classes;
+
+public class Cashier {
+
+}
