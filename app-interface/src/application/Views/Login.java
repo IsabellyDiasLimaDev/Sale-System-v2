@@ -1,4 +1,4 @@
-package application.Classes;
+package application.Views;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,14 +6,17 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Customer extends Application {
+public class Login extends Application {
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			VBox root = (VBox) FXMLLoader.load(getClass().getResource("ManageCustomer.fxml"));
-			Scene scene = new Scene(root, 400, 400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			VBox root = (VBox) FXMLLoader.load(getClass().getResource("Login.fxml"));
+			Scene scene = new Scene(root, 600, 420);
+			// primaryStage.getIcons().add(new Image("wine.png"));
+			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("M&N Bebidas");
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
