@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="600.0" style="-fx-background-color: #F2FEDC;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.UserController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="622.0" style="-fx-background-color: #F2FEDC;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.UserController">
 	<children>
 		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #FFD500;">
 			<children>
@@ -23,18 +23,18 @@
 				</Label>
 			</children>
 		</Pane>
-		<HBox prefHeight="261.0" prefWidth="532.0" style="-fx-background-color: #F2FEDC;">
+		<HBox prefHeight="251.0" prefWidth="599.0" style="-fx-background-color: #F2FEDC;">
 			<VBox.margin>
 				<Insets top="20.0" />
 			</VBox.margin>
 			<children>
-				<TableView fx:id="tableUser" prefHeight="261.0" prefWidth="611.0" style="-fx-background-color: #F2FEDC;">
+				<TableView fx:id="tableUser" prefHeight="244.0" prefWidth="636.0" style="-fx-background-color: #F2FEDC;">
 					<columns>
-						<TableColumn id="cdLogin" prefWidth="46.0" styleClass="table-user" text="Id" />
-						<TableColumn id="nmEmail" prefWidth="177.0" styleClass="table-user" text="E-mail" />
-						<TableColumn id="nmUser" prefWidth="121.0" styleClass="table-user" text="Usuário" />
-						<TableColumn id="dsType" prefWidth="145.0" styleClass="table-user" text="Tipo de usuário" />
-						<TableColumn id="dsStatus" prefWidth="110.0" styleClass="table-user" text="Status" />
+						<TableColumn id="cdLogin" fx:id="cdLogin" prefWidth="46.0" styleClass="table-user" text="Id" />
+						<TableColumn id="nmEmail" fx:id="nmEmail" prefWidth="192.0" styleClass="table-user" text="E-mail" />
+						<TableColumn id="nmUser" fx:id="nmUser" prefWidth="147.0" styleClass="table-user" text="Usuário" />
+						<TableColumn id="dsType" fx:id="dsType" prefWidth="113.0" styleClass="table-user" text="Tipo de usuário" />
+						<TableColumn id="dsStatus" fx:id="dsStatus" prefWidth="104.0" styleClass="table-user" text="Status" />
 					</columns>
 					<padding>
 						<Insets left="10.0" right="10.0" />
@@ -44,9 +44,23 @@
 		</HBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="622.0">
                <children>
-                  <VBox alignment="CENTER_LEFT" prefHeight="84.0" prefWidth="300.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="58.0">
+                     <children>
+                        <Label text="Id">
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtfId" prefHeight="30.0" style="-fx-border-color: #E5E5DE; -fx-border-radius: 5; -fx-background-color: #FFF;">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="297.0">
                      <children>
                         <Label text="E-mail">
                            <VBox.margin>
@@ -60,7 +74,7 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER_LEFT" prefHeight="109.0" prefWidth="294.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="97.0" prefWidth="300.0">
                      <children>
                         <Label text="Usuário">
                            <VBox.margin>
@@ -106,6 +120,20 @@
                         </TextField>
                      </children>
                   </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="156.0">
+                     <children>
+                        <Label text="Status do usuário">
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="statusCombo" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;">
+                           <VBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>
@@ -117,7 +145,7 @@
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
-				<Button fx:id="updateButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;" text="Atualizar">
+				<Button fx:id="updateButton" onAction="#buttonUpdate_Action" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;" text="Atualizar">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
@@ -127,12 +155,12 @@
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
             </Button>
-				<Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;" text="Excluir">
+				<Button fx:id="deleteButton" onAction="#buttonDelete_Action" mnemonicParsing="false" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;" text="Excluir">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
-            <Button fx:id="cancelButton" layoutX="533.0" layoutY="28.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;" text="Cancelar">
+            <Button fx:id="cancelButton" layoutX="533.0" layoutY="28.0" mnemonicParsing="false" onAction="#buttonCancel_Action" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;" text="Cancelar">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
