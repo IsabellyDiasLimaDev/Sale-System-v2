@@ -22,7 +22,7 @@ FOREIGN KEY (cd_User) REFERENCES tblUser (cdUser);
 ALTER TABLE tblLogin
 MODIFY cdLogin INTEGER AUTO_INCREMENT;
 
-INSERT INTO tblLogin (nmEmail,nmUser,nmPassword,dsType,dsStatus) VALUES ("isabellydias29@gmail.com","isabelly_dias","1234567","Administrador","Ativo");
+INSERT INTO tblLogin (nmEmail,nmUser,nmPassword,dsType,dsStatus) VALUES ("admin@gmail.com","admin","1234567","Administrador","Ativo");
 INSERT INTO tblLogin (nmEmail,nmUser,nmPassword,dsType,dsStatus) VALUES ("wickdias@gmail.com","wick_dias","1234567","Funcionário","Ativo");
 
 CREATE TABLE tblCashier
@@ -84,7 +84,7 @@ CREATE TABLE tblProduct
     noBarCode        CHAR(100)  NOT NULL,
     nmDescription    CHAR(100)  NOT NULL,
     dtExpirationDate DATE       NOT NULL,
-    noUnitaryValue   DECIMAL(6) NOT NULL,
+    noAmountPaid     DECIMAL(6) NOT NULL,
     noSaleValue      DECIMAL(6) NOT NULL,
     noProfit         DECIMAL(6) NOT NULL,
     noQuantity       INT        NOT NULL

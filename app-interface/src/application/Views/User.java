@@ -12,7 +12,6 @@ public class User {
 		Stage stage = (Stage) imgUser.getScene().getWindow();
 		stage.close();
 		try {
-			System.out.println("Clicou!");
 			VBox root = (VBox) FXMLLoader.load(getClass().getResource("ManageUser.fxml"));
 			Scene scene = new Scene(root, 600, 582);
 			Stage newWindow = new Stage();

@@ -2,3 +2,6 @@
 /app-entities/nbproject/private/
 /app-repositories/nbproject/private/
 /app-interface/nbproject/private/
+/app-entities/build/
+/app-interface/build/
+/app-repositories/build/

@@ -19,8 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumnBase;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -71,7 +69,7 @@ public class UserController implements Initializable {
 			}
 		});
 		loadUserTable();
-		typeCombo.getItems().addAll("Administrador", "Funcionário");
+		typeCombo.getItems().addAll("Administrador", "Funcionï¿½rio");
 		statusCombo.getItems().addAll("Ativo", "Inativo");
 		statusCombo.setDisable(true);
 
@@ -103,9 +101,9 @@ public class UserController implements Initializable {
 			UserClass user = new UserClass();
 			user.setCdLogin(Integer.parseInt(txtfId.getText()));
 			Alert mensagem = new Alert(AlertType.WARNING);
-			mensagem.setTitle("Atenção!");
-			mensagem.setHeaderText("Exclusão de usuário");
-			mensagem.setContentText("Tem certeza que deseja excluir este usuário?");
+			mensagem.setTitle("Atenï¿½ï¿½o!");
+			mensagem.setHeaderText("Exclusï¿½o de usuï¿½rio");
+			mensagem.setContentText("Tem certeza que deseja excluir este usuï¿½rio?");
 			Optional<ButtonType> result = mensagem.showAndWait();
 			if (result.isPresent() && result.get() == ButtonType.OK) {
 				repositoryUser.excluir(user);
@@ -115,7 +113,7 @@ public class UserController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro ao tentar excluir um usuário: " + e.getMessage());
+			mensagem.setContentText("Houve um erro ao tentar excluir um usuï¿½rio: " + e.getMessage());
 			mensagem.showAndWait();
 		}
 	}
@@ -131,7 +129,7 @@ public class UserController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro ao obter a lista de usuários: " + e.getMessage());
+			mensagem.setContentText("Houve um erro ao obter a lista de usuï¿½rios: " + e.getMessage());
 			mensagem.showAndWait();
 		}
 	}
@@ -149,8 +147,8 @@ public class UserController implements Initializable {
 				repositoryUser.inserir(user);
 				Alert mensagem = new Alert(AlertType.INFORMATION);
 				mensagem.setTitle("Concluido");
-				mensagem.setHeaderText("Usuário cadastrado");
-				mensagem.setContentText("Usuário foi cadastrado com sucesso");
+				mensagem.setHeaderText("Usuï¿½rio cadastrado");
+				mensagem.setContentText("Usuï¿½rio foi cadastrado com sucesso");
 				mensagem.showAndWait();
 			} else {
 				user.setNmEmail(txtfEmail.getText());
@@ -162,8 +160,8 @@ public class UserController implements Initializable {
 				repositoryUser.atualizar(user);
 				Alert mensagem = new Alert(AlertType.INFORMATION);
 				mensagem.setTitle("Concluido");
-				mensagem.setHeaderText("Usuário atualizado");
-				mensagem.setContentText("Usuário foi atualizado com sucesso");
+				mensagem.setHeaderText("Usuï¿½rio atualizado");
+				mensagem.setContentText("Usuï¿½rio foi atualizado com sucesso");
 				mensagem.showAndWait();
 			}
 
@@ -171,7 +169,7 @@ public class UserController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro ao inserir ou atualizar o usuário: " + e.getMessage());
+			mensagem.setContentText("Houve um erro ao inserir ou atualizar o usuï¿½rio: " + e.getMessage());
 			mensagem.showAndWait();
 		}
 	}
