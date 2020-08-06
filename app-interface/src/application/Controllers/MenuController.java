@@ -7,6 +7,8 @@ import application.Views.Product;
 import application.Views.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
@@ -20,20 +22,38 @@ public class MenuController implements Initializable {
 	private ImageView imgProduct;
 	@FXML
 	private Label lblProduct;
+	@FXML
+	private Label lblUsername;
+	@FXML
+	private Label lblType;
 
 	public void clickUser() {
 		User user = new User();
 		user.start(imgUser);
 	}
+
 	public void clickProduct() {
 		Product user = new Product();
 		user.start(imgProduct);
 	}
 
+	public void isNotAdmin() {
+		Alert mensagem = new Alert(AlertType.ERROR);
+		mensagem.setTitle("Erro!");
+		mensagem.setHeaderText("Somente administrador");
+		mensagem.setContentText("Acesso somente para os administradores do sistema!");
+		mensagem.showAndWait();
+	}
+
+	/*
+	 * public void setSession() { UserSession session = new UserSession();
+	 * lblUsername.setText(session.getUserName());
+	 * lblType.setText(session.getPrivileges()); }
+	 */
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-
+		// setSession();
 	}
 
 }

@@ -90,6 +90,10 @@ CREATE TABLE tblProduct
     noQuantity       INT        NOT NULL
 );
 
+-- UPDATE tblProduct
+-- SET noBarCode = ?, nmDescription = ?, dtExpirationDate = ?, noAmountPaid = ?, noSaleValue = ?,noProfit = ?, noQuantity = ?
+-- WHERE cdProduct = ?;
+
 ALTER TABLE tblProduct
 ADD CONSTRAINT PK_Product_Product PRIMARY KEY (cdProduct);
 

@@ -1,9 +1,11 @@
 package application.Controllers;
 
+import java.awt.desktop.UserSessionEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 
 import application.Views.Menu;
+import br.com.mnbebidas.entities.UserSession;
 import br.com.mnbebidas.repositories.impl.AppLoginJDBC;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -39,11 +41,15 @@ public class LoginController {
 				mensagem.showAndWait();
 			} else {
 				if (verifyAdmin) {
+					UserSession session = new UserSession(user, "Administrador");
 					Menu menu = new Menu();
 					menu.createMenuAdmin(loginButton);
+					System.out.println(session.getUserName() + " " + session.getPrivileges());
 				} else {
+					UserSession session = new UserSession(user, "Funcionário");
 					Menu menu = new Menu();
 					menu.createMenu(loginButton);
+					System.out.println(session.getUserName() + " " + session.getPrivileges());
 				}
 			}
 		} catch (SQLException e) {

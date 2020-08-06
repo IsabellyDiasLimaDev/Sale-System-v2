@@ -2,11 +2,18 @@ package application.Controllers;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import br.com.mnbebidas.entities.ProductClass;
+import br.com.mnbebidas.entities.UserClass;
 import br.com.mnbebidas.repositories.impl.AppProductJDBC;
+import br.com.mnbebidas.repositories.impl.AppUserJDBC;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
@@ -52,12 +60,34 @@ public class ProductController implements Initializable {
 	private Button cancelButton;
 
 	private boolean isCreate;
+	private ProductClass selectedProduct;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.tableProduct.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		loadListProduct();
 		enableEditing(false);
+
+		this.tableProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldProduct, newProduct) -> {
+			if (newProduct != null) {
+				txtfAmountPaid.setText(Double.toString(newProduct.getNoAmountPaid()));
+				txtfBarCode.setText(Double.toString(newProduct.getNoBarCode()));
+				txtfDescription.setText(newProduct.getNmDescription());
+				txtfId.setText(Integer.toString(newProduct.getCdProduct()));
+				txtfProfit.setText(Double.toString(newProduct.getNoProfit()));
+				txtfQuantity.setText(Integer.toString(newProduct.getNoQuantity()));
+				txtfSaleValue.setText(Double.toString(newProduct.getNoSaleValue()));
+				expirationDate.setValue(LOCAL_DATE(newProduct.getDtExpirationDate()));
+
+				this.selectedProduct = newProduct;
+			}
+		});
+	}
+
+	public static final LocalDate LOCAL_DATE(String dateString) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate localDate = LocalDate.parse(dateString, formatter);
+		return localDate;
 	}
 
 	public void loadListProduct() {
@@ -89,14 +119,15 @@ public class ProductController implements Initializable {
 	}
 
 	public void buttonUpdate_Action() {
-
+		this.isCreate = false;
+		enableEditing(true);
 	}
 
 	public void createProduct() {
 		AppRepository<ProductClass> repositoryProduct = new AppProductJDBC();
 		ProductClass product = new ProductClass();
 		try {
-			if(this.isCreate == true) {
+			if (this.isCreate == true) {
 				double sale = Double.parseDouble(txtfSaleValue.getText());
 				double amount = Double.parseDouble(txtfAmountPaid.getText());
 				double profit = sale - amount;
@@ -114,8 +145,27 @@ public class ProductController implements Initializable {
 				mensagem.setHeaderText("Produto cadastrado");
 				mensagem.setContentText("Produto foi cadastrado com sucesso");
 				mensagem.showAndWait();
+			} else {
+				double sale = Double.parseDouble(txtfSaleValue.getText());
+				double amount = Double.parseDouble(txtfAmountPaid.getText());
+				double profit = sale - amount;
+				txtfProfit.setText(Double.toString(profit));
+				product.setNoBarCode(Double.parseDouble(txtfBarCode.getText()));
+				product.setNmDescription(txtfDescription.getText());
+				product.setDtExpirationDate(expirationDate.getValue().toString());
+				product.setNoAmountPaid(Double.parseDouble(txtfAmountPaid.getText()));
+				product.setNoSaleValue(Double.parseDouble(txtfSaleValue.getText()));
+				product.setNoProfit(profit);
+				product.setNoQuantity(Integer.parseInt(txtfQuantity.getText()));
+				product.setCdProduct(Integer.parseInt(txtfId.getText()));
+				repositoryProduct.atualizar(product);
+				Alert mensagem = new Alert(AlertType.INFORMATION);
+				mensagem.setTitle("Concluido");
+				mensagem.setHeaderText("Produto atualizado");
+				mensagem.setContentText("Produto foi atualizado com sucesso");
+				mensagem.showAndWait();
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
@@ -124,14 +174,31 @@ public class ProductController implements Initializable {
 		}
 	}
 
-	public void buttonDelete_Action() {
-
+	public void buttonDelete_Action() throws SQLException {
+		this.isCreate = false;
+		enableEditing(true);
+		deleteProduct();
+	}
+	
+	public void deleteProduct() throws SQLException {
+		AppRepository<ProductClass> repositoryProduct = new AppProductJDBC();
+		ProductClass product = new ProductClass();
+		product.setCdProduct(Integer.parseInt(txtfId.getText()));
+		Alert mensagem = new Alert(AlertType.WARNING);
+		mensagem.setTitle("Atenção!");
+		mensagem.setHeaderText("Exclusão de usuário");
+		mensagem.setContentText("Tem certeza que deseja excluir este usuário?");
+		Optional<ButtonType> result = mensagem.showAndWait();
+		if (result.isPresent() && result.get() == ButtonType.OK) {
+			repositoryProduct.excluir(product);
+		}
 	}
 
 	public void buttonCancel_Action() {
-
+		enableEditing(false);
+		this.tableProduct.getSelectionModel().selectFirst();
 	}
-	
+
 	private void enableEditing(Boolean edicaoEstaHabilitada) {
 		this.txtfAmountPaid.setDisable(!edicaoEstaHabilitada);
 		this.txtfBarCode.setDisable(!edicaoEstaHabilitada);

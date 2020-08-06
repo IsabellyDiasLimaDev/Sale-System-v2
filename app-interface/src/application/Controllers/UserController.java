@@ -69,7 +69,7 @@ public class UserController implements Initializable {
 			}
 		});
 		loadUserTable();
-		typeCombo.getItems().addAll("Administrador", "Funcionï¿½rio");
+		typeCombo.getItems().addAll("Administrador", "Funcionário");
 		statusCombo.getItems().addAll("Ativo", "Inativo");
 		statusCombo.setDisable(true);
 
