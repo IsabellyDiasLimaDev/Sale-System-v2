@@ -4,3 +4,4 @@
 # Languages used
 * Java
 * MySQL
+* XML
