@@ -9,7 +9,6 @@ public class ListCashierProduct {
 	private double noValue;
 	private double totalValue;
 
-	
 	public int getPosition() {
 		return position;
 	}
@@ -56,6 +55,11 @@ public class ListCashierProduct {
 
 	public void setTotalValue(double totalValue) {
 		this.totalValue = totalValue;
+	}
+
+	@Override
+	public String toString() {
+		return position + "   " + noBarCode + "  " + nmDescription + "          " + noQuantity + "    " + noValue + "   " + totalValue;
 	}
 
 }

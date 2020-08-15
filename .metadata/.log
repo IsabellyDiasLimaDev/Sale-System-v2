@@ -4931,3 +4931,481 @@ java.lang.InterruptedException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+!SESSION 2020-08-14 23:21:52.922 -----------------------------------------------
+eclipse.buildId=4.16.0.I20200604-0540
+java.version=14.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-08-14 23:25:25.028
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui 2 0 2020-08-14 23:25:27.615
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-08-14 23:25:27.618
+!MESSAGE Defining a key binding with no key sequence has no effect: plug-in='org.springframework.ide.eclipse.boot.wizard', id='org.springframework.ide.eclipse.boot.wizard.addStarersSwitchHandler'
+
+!ENTRY org.eclipse.jface 2 0 2020-08-14 23:25:34.636
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-08-14 23:25:34.636
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3619bc9e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2e640411,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-08-14 23:25:53.317
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\isabe_2y5'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:45.539
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:45.774
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@c47908f[org.springframework.tooling.boot.ls:1.19.0.202006181152(id=1109)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:45.845
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:45.915
+!MESSAGE Instantiating ReusableClasspathListenerHandler
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:48.708
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:48.727
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@c47908f[org.springframework.tooling.boot.ls:1.19.0.202006181152(id=1109)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:48.746
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:56.768
+!MESSAGE Boot LS startup time from start to initialized: 8008ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:56.918
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.TUKzkWNdisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:56.969
+!MESSAGE Creating project sorter...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.035
+!MESSAGE Creating project sorter... DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.114
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.191
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.230
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.251
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.282
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.TUKzkWNd => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.328
+!MESSAGE classpath=2 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.395
+!MESSAGE buffering callback sts4.classpath.TUKzkWNd app-entities false 2
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.489
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.651
+!MESSAGE classpath=13 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.746
+!MESSAGE buffering callback sts4.classpath.TUKzkWNd app-interface false 13
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.770
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.791
+!MESSAGE classpath=4 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.803
+!MESSAGE buffering callback sts4.classpath.TUKzkWNd app-repositories false 4
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.825
+!MESSAGE executing callback sts4.classpath.TUKzkWNd 3 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-14 23:28:57.888
+!MESSAGE executing callback sts4.classpath.TUKzkWNd SUCCESS [done]
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-08-14 23:32:18.207
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\0.png (Acesso negado))
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\0.png (Acesso negado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.lambda$0(LSJavaHoverProvider.java:68)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1800)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1792)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1016)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1665)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1598)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\0.png (Acesso negado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 16 more
+
+!ENTRY org.eclipse.jface.text 4 0 2020-08-14 23:32:18.391
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\1.png (O sistema não pode encontrar o caminho especificado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\1.png (O sistema não pode encontrar o caminho especificado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 12 more
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-08-14 23:32:20.403
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\2.png (O sistema não pode encontrar o caminho especificado))
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\2.png (O sistema não pode encontrar o caminho especificado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.lambda$0(LSJavaHoverProvider.java:68)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1800)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1792)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1016)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1665)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1598)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\2.png (O sistema não pode encontrar o caminho especificado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 16 more
+
+!ENTRY org.eclipse.jface.text 4 0 2020-08-14 23:32:20.499
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\3.png (O sistema não pode encontrar o caminho especificado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\3.png (O sistema não pode encontrar o caminho especificado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 12 more
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-08-14 23:32:28.964
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\4.png (O sistema não pode encontrar o caminho especificado))
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\4.png (O sistema não pode encontrar o caminho especificado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.lambda$0(LSJavaHoverProvider.java:68)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1800)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1792)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1016)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1665)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1598)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\4.png (O sistema não pode encontrar o caminho especificado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 16 more
+
+!ENTRY org.eclipse.jface.text 4 0 2020-08-14 23:32:29.120
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\5.png (O sistema não pode encontrar o caminho especificado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\5.png (O sistema não pode encontrar o caminho especificado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 12 more
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-08-14 23:32:38.136
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\6.png (O sistema não pode encontrar o caminho especificado))
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\6.png (O sistema não pode encontrar o caminho especificado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.lambda$0(LSJavaHoverProvider.java:68)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1800)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1792)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1016)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1665)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1598)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\6.png (O sistema não pode encontrar o caminho especificado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 16 more
+
+!ENTRY org.eclipse.jface.text 4 0 2020-08-14 23:32:42.507
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\7.png (O sistema não pode encontrar o caminho especificado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\7.png (O sistema não pode encontrar o caminho especificado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 12 more
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-08-14 23:35:18.848
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\8.png (O sistema não pode encontrar o caminho especificado))
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\8.png (O sistema não pode encontrar o caminho especificado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.lambda$0(LSJavaHoverProvider.java:68)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1800)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1792)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1016)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1665)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1598)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\8.png (O sistema não pode encontrar o caminho especificado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 16 more
+
+!ENTRY org.eclipse.jface.text 4 0 2020-08-14 23:35:18.940
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+org.eclipse.swt.SWTException: i/o error (java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\9.png (O sistema não pode encontrar o caminho especificado))
+	at org.eclipse.swt.SWT.error(SWT.java:4723)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:266)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:106)
+	at org.eclipse.jdt.internal.ui.viewsupport.ImagesOnFileSystemRegistry.getImageURL(ImagesOnFileSystemRegistry.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageURL(JavadocHover.java:943)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getImageAndLabel(JavadocHover.java:1101)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getInfoText(JavadocHover.java:844)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:678)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:670)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+Caused by: java.io.FileNotFoundException: D:\Documentos\projetos\M&N Bebidas\code_v4\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\9.png (O sistema não pode encontrar o caminho especificado)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:291)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:234)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:264)
+	... 12 more
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-08-15 01:19:36.806
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-15 02:28:57.079
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.TUKzkWNd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-15 02:28:57.192
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.TUKzkWNd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-15 02:28:57.243
+!MESSAGE subsribers = {}
+
+!ENTRY org.eclipse.ui 2 2 2020-08-15 02:28:57.286
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-15 02:28:57.298
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.TUKzkWNd => OK

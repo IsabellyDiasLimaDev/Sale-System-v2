@@ -35,7 +35,8 @@ public class CashierController implements Initializable {
 	@FXML
 	private TextField txtfDescription;
 	@FXML
-	private TableView<ListCashierProduct> tableProduct;
+	private ListView<ListCashierProduct> listProduct;
+	// private TableView<ListCashierProduct> tableProduct;
 
 	// private double code;
 	private double totalValueSale = 0f;
@@ -86,7 +87,7 @@ public class CashierController implements Initializable {
 				long valueCode = Long.parseLong(newValue);
 				try {
 					ArrayList<CashierClass> products = productRepository.selectProductToCashier(valueCode);
-					
+
 					ListCashierProduct setProduct = new ListCashierProduct();
 					if (products != null) {
 						isNew = true;
@@ -103,8 +104,10 @@ public class CashierController implements Initializable {
 						setProduct.setNoValue(products.get(0).getNoSaleValue());
 						setProduct.setTotalValue(totalValueProduct);
 						listProducts.add(setProduct);
-						ObservableList<ListCashierProduct> observableListProducts = FXCollections.observableArrayList(listProducts);
-						tableProduct.getItems().setAll(observableListProducts);
+						ObservableList<ListCashierProduct> observableListProducts = FXCollections
+								.observableArrayList(listProducts);
+						listProduct.setItems(observableListProducts);
+						// tableProduct.getItems().setAll(observableListProducts);
 						changeTotalValue(isNew);
 						isNew = false;
 						System.out.println(observableListProducts);
