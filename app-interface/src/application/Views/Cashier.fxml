@@ -2,99 +2,197 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #FFD500;">
-         <children>
-            <Label layoutX="14.0" layoutY="20.0" text="Caixa" textFill="#422800">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <HBox prefHeight="100.0" prefWidth="200.0" />
-      <HBox prefHeight="309.0" prefWidth="580.0" style="-fx-border-color: #001B14; -fx-border-radius: 6;">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="251.0" prefWidth="178.0">
-               <children>
-                  <Label text="Código">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Label text="Quantidade">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;" />
-                  <Label text="Preço unitário">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;" />
-                  <Label text="Preço total">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="251.0" prefWidth="436.0">
-               <children>
-                  <Label text="Lista de produtos">
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Label>
-                  <ListView prefHeight="200.0" prefWidth="200.0">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </ListView>
-                  <Label text="Preço total">
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField maxWidth="200.0" prefWidth="200.0" style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;" />
-               </children>
-            </VBox>
-         </children>
-         <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </VBox.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </HBox>
-   </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0"
+	prefWidth="670.0" xmlns="http://javafx.com/javafx/11.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.Controllers.CashierController">
+	<children>
+		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0"
+			prefWidth="600.0" style="-fx-background-color: #FFD500;">
+			<children>
+				<Label layoutX="14.0" layoutY="20.0" text="Caixa"
+					textFill="#422800">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+			</children>
+		</Pane>
+		<HBox prefHeight="100.0" prefWidth="200.0" />
+		<HBox prefHeight="309.0" prefWidth="580.0"
+			style="-fx-border-color: #001B14; -fx-border-radius: 6;">
+			<children>
+				<VBox alignment="TOP_CENTER" prefHeight="251.0"
+					prefWidth="178.0">
+					<children>
+						<Label text="Código">
+							<VBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</VBox.margin>
+							<font>
+								<Font name="Segoe UI" size="14.0" />
+							</font>
+						</Label>
+						<TextField fx:id="txtfCode"
+							style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;">
+							<VBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</VBox.margin>
+						</TextField>
+						<Label text="Quantidade">
+							<VBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</VBox.margin>
+							<font>
+								<Font name="Segoe UI" size="14.0" />
+							</font>
+						</Label>
+						<TextField fx:id="txtfQuantity"
+							style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;" />
+						<Label text="Preço unitário">
+							<VBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</VBox.margin>
+							<font>
+								<Font name="Segoe UI" size="14.0" />
+							</font>
+						</Label>
+						<TextField fx:id="txtfValue"
+							style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;" />
+						<Label text="Preço total">
+							<VBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</VBox.margin>
+							<font>
+								<Font name="Segoe UI" size="14.0" />
+							</font>
+						</Label>
+						<TextField fx:id="txtfTotalValueProduct" disable="true"
+							style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;" />
+					</children>
+					<HBox.margin>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</HBox.margin>
+				</VBox>
+				<VBox alignment="TOP_CENTER" prefHeight="297.0"
+					prefWidth="451.0">
+					<children>
+						<Label text="Descrição">
+							<font>
+								<Font name="Segoe UI" size="14.0" />
+							</font>
+							<VBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</VBox.margin>
+						</Label>
+						<TextField fx:id="txtfDescription" disable="true"
+							maxWidth="380.0" prefHeight="26.0" prefWidth="380.0"
+							style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;">
+							<VBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</VBox.margin>
+						</TextField>
+						<Label text="Lista de produtos">
+							<font>
+								<Font name="Segoe UI" size="14.0" />
+							</font>
+							<VBox.margin>
+								<Insets top="10.0" />
+							</VBox.margin>
+						</Label>
+						<TableView fx:id="tableProduct" prefHeight="161.0"
+							prefWidth="448.0">
+							<columns>
+								<TableColumn prefWidth="46.0" text="Item">
+									<cellValueFactory>
+										<PropertyValueFactory property="position" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn prefWidth="97.0" text="Código">
+									<cellValueFactory>
+										<PropertyValueFactory
+											property="noBarCode" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn prefWidth="150.0" text="Descrição">
+									<cellValueFactory>
+										<PropertyValueFactory
+											property="nmDescription" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn prefWidth="44.0" text="Qtde">
+									<cellValueFactory>
+										<PropertyValueFactory
+											property="noQuantity" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn prefWidth="59.0" text="Venda">
+									<cellValueFactory>
+										<PropertyValueFactory property="noValue" />
+									</cellValueFactory>
+								</TableColumn>
+								<TableColumn prefWidth="64.0" text="Total">
+									<cellValueFactory>
+										<PropertyValueFactory
+											property="totalValue" />
+									</cellValueFactory>
+								</TableColumn>
+							</columns>
+						</TableView>
+						<Label text="Preço total">
+							<font>
+								<Font name="Segoe UI" size="14.0" />
+							</font>
+						</Label>
+						<TextField fx:id="txtfTotalValueSale" disable="true"
+							maxWidth="200.0" prefWidth="200.0"
+							style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;" />
+					</children>
+					<HBox.margin>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</HBox.margin>
+				</VBox>
+			</children>
+			<VBox.margin>
+				<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+			</VBox.margin>
+			<padding>
+				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+			</padding>
+		</HBox>
+		<HBox alignment="CENTER_RIGHT" prefHeight="58.0"
+			prefWidth="600.0">
+			<children>
+				<Label text="Voltar para o menu">
+					<HBox.margin>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</HBox.margin>
+					<font>
+						<Font name="Segoe UI" size="18.0" />
+					</font>
+				</Label>
+				<ImageView fitHeight="36.0" fitWidth="36.0"
+					pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="@../../back.png" />
+					</image>
+					<HBox.margin>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</HBox.margin>
+				</ImageView>
+			</children>
+		</HBox>
+	</children>
 </VBox>

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import br.com.mnbebidas.entities.CashierClass;
 import br.com.mnbebidas.entities.ProductClass;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
 
@@ -33,7 +34,7 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 				datefor = rs.getDate("dtExpirationDate");
 				formatador.format(datefor);
 				product.setCdProduct(rs.getInt("cdProduct"));
-				product.setNoBarCode(rs.getDouble("noBarCode"));
+				product.setNoBarCode(rs.getLong("noBarCode"));
 				product.setNmDescription(rs.getString("nmDescription"));
 				product.setDtExpirationDate(formatador.format(datefor));
 				product.setNoAmountPaid(rs.getDouble("noAmountPaid"));
@@ -64,7 +65,7 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 			// Date datefor = null;
 			// datefor = formater.parse(data);
 			// formater.applyPattern("yyyy-MM-dd");
-			comando.setDouble(1, entidade.getNoBarCode());
+			comando.setLong(1, entidade.getNoBarCode());
 			comando.setString(2, entidade.getNmDescription());
 			comando.setString(3, entidade.getDtExpirationDate());
 			comando.setDouble(4, entidade.getNoAmountPaid());
@@ -108,17 +109,43 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 	@Override
 	public void excluir(ProductClass entidade) throws SQLException {
 		Connection con = null;
-        try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-                    "root", "Dias042012");
-            PreparedStatement comando = con.prepareStatement(
-                    "DELETE FROM tblProduct WHERE cdProduct = ?");
-            comando.setInt(1, entidade.getCdProduct());
-        } finally {
-            if (con != null) {
-                con.close();
-            }
-        }
-    }
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
+					"root", "Dias042012");
+			PreparedStatement comando = con.prepareStatement("DELETE FROM tblProduct WHERE cdProduct = ?");
+			comando.setInt(1, entidade.getCdProduct());
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
 
+	public ArrayList<CashierClass> selectProductToCashier(long noBarCode) throws SQLException {
+		Connection con = null;
+		boolean isNext = false;
+		ArrayList<CashierClass> product = new ArrayList<CashierClass>();
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
+					"root", "Dias042012");
+			String query = "SELECT nmDescription, noSaleValue FROM tblProduct WHERE noBarCode = ?;";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setDouble(1, noBarCode);
+			ResultSet rs = ps.executeQuery();
+			isNext = rs.next();
+			if (isNext) {
+				CashierClass products = new CashierClass();
+				products.setNmDescription(rs.getString("nmDescription"));
+				products.setNoSaleValue(rs.getDouble("noSaleValue"));
+				product.add(products);
+				System.out.println(products.getNmDescription());
+			}
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+
+		return product;
+	}
 }

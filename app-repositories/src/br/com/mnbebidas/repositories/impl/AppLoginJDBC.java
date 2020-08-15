@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.mnbebidas.connection.ConnectionJDBC;
-
 public class AppLoginJDBC {
 
 	public boolean verifyUser(String user, String password) throws SQLException, IOException {

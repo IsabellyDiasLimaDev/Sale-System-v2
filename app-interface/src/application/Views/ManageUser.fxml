@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity"
@@ -40,15 +34,35 @@
 					prefWidth="636.0" style="-fx-background-color: #F2FEDC;">
 					<columns>
 						<TableColumn id="cdLogin" prefWidth="46.0"
-							styleClass="table-user" text="Id" />
+							styleClass="table-user" text="Id">
+							<cellValueFactory>
+								<PropertyValueFactory property="cdLogin" />
+							</cellValueFactory>
+						</TableColumn>
 						<TableColumn id="nmEmail" prefWidth="192.0"
-							styleClass="table-user" text="E-mail" />
+							styleClass="table-user" text="E-mail">
+							<cellValueFactory>
+								<PropertyValueFactory property="nmEmail" />
+							</cellValueFactory>
+						</TableColumn>
 						<TableColumn id="nmUser" prefWidth="147.0"
-							styleClass="table-user" text="Usuário" />
+							styleClass="table-user" text="Usuário">
+							<cellValueFactory>
+								<PropertyValueFactory property="nmUser" />
+							</cellValueFactory>
+						</TableColumn>
 						<TableColumn id="dsType" prefWidth="113.0"
-							styleClass="table-user" text="Tipo de usuário" />
+							styleClass="table-user" text="Tipo de usuário">
+							<cellValueFactory>
+								<PropertyValueFactory property="dsType" />
+							</cellValueFactory>
+						</TableColumn>
 						<TableColumn id="dsStatus" prefWidth="104.0"
-							styleClass="table-user" text="Status" />
+							styleClass="table-user" text="Status">
+							<cellValueFactory>
+								<PropertyValueFactory property="dsStatus" />
+							</cellValueFactory>
+						</TableColumn>
 					</columns>
 					<padding>
 						<Insets left="10.0" right="10.0" />

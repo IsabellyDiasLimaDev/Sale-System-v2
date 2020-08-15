@@ -15,6 +15,8 @@ import br.com.mnbebidas.entities.UserClass;
 import br.com.mnbebidas.repositories.impl.AppProductJDBC;
 import br.com.mnbebidas.repositories.impl.AppUserJDBC;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -61,6 +63,9 @@ public class ProductController implements Initializable {
 
 	private boolean isCreate;
 	private ProductClass selectedProduct;
+	double sale = 0;
+	double amount = 0;
+	double profit = 0;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -80,6 +85,19 @@ public class ProductController implements Initializable {
 				expirationDate.setValue(LOCAL_DATE(newProduct.getDtExpirationDate()));
 
 				this.selectedProduct = newProduct;
+			}
+		});
+
+		txtfSaleValue.textProperty().addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+				//7891095600847
+				sale = Double.parseDouble(txtfSaleValue.getText());
+				amount = Double.parseDouble(txtfAmountPaid.getText());
+				profit = sale - amount;
+				txtfProfit.setText(Double.toString(profit));
+
 			}
 		});
 	}
@@ -128,11 +146,7 @@ public class ProductController implements Initializable {
 		ProductClass product = new ProductClass();
 		try {
 			if (this.isCreate == true) {
-				double sale = Double.parseDouble(txtfSaleValue.getText());
-				double amount = Double.parseDouble(txtfAmountPaid.getText());
-				double profit = sale - amount;
-				txtfProfit.setText(Double.toString(profit));
-				product.setNoBarCode(Double.parseDouble(txtfBarCode.getText()));
+				product.setNoBarCode(Long.parseLong(txtfBarCode.getText()));
 				product.setNmDescription(txtfDescription.getText());
 				product.setDtExpirationDate(expirationDate.getValue().toString());
 				product.setNoAmountPaid(Double.parseDouble(txtfAmountPaid.getText()));
@@ -150,7 +164,7 @@ public class ProductController implements Initializable {
 				double amount = Double.parseDouble(txtfAmountPaid.getText());
 				double profit = sale - amount;
 				txtfProfit.setText(Double.toString(profit));
-				product.setNoBarCode(Double.parseDouble(txtfBarCode.getText()));
+				product.setNoBarCode(Long.parseLong(txtfBarCode.getText()));
 				product.setNmDescription(txtfDescription.getText());
 				product.setDtExpirationDate(expirationDate.getValue().toString());
 				product.setNoAmountPaid(Double.parseDouble(txtfAmountPaid.getText()));
@@ -179,7 +193,7 @@ public class ProductController implements Initializable {
 		enableEditing(true);
 		deleteProduct();
 	}
-	
+
 	public void deleteProduct() throws SQLException {
 		AppRepository<ProductClass> repositoryProduct = new AppProductJDBC();
 		ProductClass product = new ProductClass();

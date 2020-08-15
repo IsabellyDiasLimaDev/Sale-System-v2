@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0"
@@ -38,14 +39,50 @@
 				<TableView fx:id="tableProduct" prefHeight="251.0"
 					prefWidth="816.0">
 					<columns>
-						<TableColumn prefWidth="50.0" text="Id" />
-						<TableColumn prefWidth="119.0" text="Código de barras" />
-						<TableColumn prefWidth="185.0" text="Descrição" />
-						<TableColumn prefWidth="83.0" text="Validade" />
-						<TableColumn prefWidth="89.0" text="Valor pago" />
-						<TableColumn prefWidth="98.0" text="Valor de venda" />
-						<TableColumn prefWidth="71.0" text="Lucro" />
-						<TableColumn prefWidth="79.0" text="Quantidade" />
+						<TableColumn prefWidth="50.0" text="Id">
+							<cellValueFactory>
+								<PropertyValueFactory property="cdProduct" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn prefWidth="119.0" text="Código de barras">
+							<cellValueFactory>
+								<PropertyValueFactory property="noBarCode" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn prefWidth="185.0" text="Descrição">
+							<cellValueFactory>
+								<PropertyValueFactory
+									property="nmDescription" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn prefWidth="83.0" text="Validade">
+							<cellValueFactory>
+								<PropertyValueFactory
+									property="dtExpirationDate" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn prefWidth="89.0" text="Valor pago">
+							<cellValueFactory>
+								<PropertyValueFactory
+									property="noAmountPaid" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn prefWidth="98.0" text="Valor de venda">
+							<cellValueFactory>
+								<PropertyValueFactory
+									property="noSaleValue" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn prefWidth="71.0" text="Lucro">
+							<cellValueFactory>
+								<PropertyValueFactory property="noProfit" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn prefWidth="79.0" text="Quantidade" >
+						<cellValueFactory>
+								<PropertyValueFactory property="noQuantity" />
+							</cellValueFactory>
+							</TableColumn>
 					</columns>
 				</TableView>
 			</children>

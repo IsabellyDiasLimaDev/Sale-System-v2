@@ -3,7 +3,7 @@ package br.com.mnbebidas.entities;
 public class ProductClass {
 
 	private int cdProduct;
-	private double noBarCode;
+	private long noBarCode;
 	private String nmDescription;
 	private String dtExpirationDate;
 	private double noAmountPaid;
@@ -19,11 +19,11 @@ public class ProductClass {
 		this.cdProduct = cdProduct;
 	}
 
-	public double getNoBarCode() {
+	public long getNoBarCode() {
 		return noBarCode;
 	}
 
-	public void setNoBarCode(double noBarCode) {
+	public void setNoBarCode(long noBarCode) {
 		this.noBarCode = noBarCode;
 	}
 

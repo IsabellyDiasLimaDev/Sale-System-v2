@@ -54,7 +54,7 @@
 				</VBox>
 				<VBox alignment="TOP_CENTER" prefHeight="336.0" prefWidth="115.0">
 					<children>
-						<ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fx:id="imgCashier" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#clickCashier" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../cashier.png" />
 							</image>

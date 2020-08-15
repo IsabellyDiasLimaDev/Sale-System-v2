@@ -129,7 +129,7 @@ public class UserController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro ao obter a lista de usuï¿½rios: " + e.getMessage());
+			mensagem.setContentText("Houve um erro ao obter a lista de usuários: " + e.getMessage());
 			mensagem.showAndWait();
 		}
 	}

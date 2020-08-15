@@ -3,6 +3,7 @@ package application.Controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Views.MenuCashier;
 import application.Views.Product;
 import application.Views.User;
 import javafx.fxml.FXML;
@@ -21,6 +22,8 @@ public class MenuController implements Initializable {
 	@FXML
 	private ImageView imgProduct;
 	@FXML
+	private ImageView imgCashier;
+	@FXML
 	private Label lblProduct;
 	@FXML
 	private Label lblUsername;
@@ -33,8 +36,13 @@ public class MenuController implements Initializable {
 	}
 
 	public void clickProduct() {
-		Product user = new Product();
-		user.start(imgProduct);
+		Product product = new Product();
+		product.start(imgProduct);
+	}
+	public void clickCashier() {
+		MenuCashier cashier = new MenuCashier();
+		cashier.start(imgCashier);
+		System.out.println("clicou");
 	}
 
 	public void isNotAdmin() {

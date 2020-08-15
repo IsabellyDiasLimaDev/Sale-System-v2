@@ -6,13 +6,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Cashier {
-
-	public void start(ImageView imgLock) {
-		Stage stage = (Stage) imgLock.getScene().getWindow();
+public class MenuCashier {
+	public void start(ImageView imgCashier) {
+		Stage stage = (Stage) imgCashier.getScene().getWindow();
 		stage.close();
 		try {
-			VBox root = (VBox) FXMLLoader.load(getClass().getResource("Cashier.fxml"));
+			VBox root = (VBox) FXMLLoader.load(getClass().getResource("MenuCashier.fxml"));
 			Scene scene = new Scene(root, 600, 582);
 			Stage newWindow = new Stage();
 			newWindow.setTitle("M&N Bebidas");

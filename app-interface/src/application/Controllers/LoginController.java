@@ -1,6 +1,5 @@
 package application.Controllers;
 
-import java.awt.desktop.UserSessionEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 

@@ -54,7 +54,7 @@
 				</VBox>
 				<VBox alignment="TOP_CENTER" prefHeight="336.0" prefWidth="115.0">
 					<children>
-						<ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fx:id="imgCashier" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#clickCashier" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../cashier.png" />
 							</image>
@@ -125,25 +125,49 @@
 				<Insets top="5.0" />
 			</VBox.margin>
 		</HBox>
-		<HBox alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="600.0">
-			<children>
-				<Label text="Sair" textFill="#422800">
-					<font>
-						<Font name="Segoe UI" size="18.0" />
-					</font>
-					<HBox.margin>
-						<Insets right="5.0" />
-					</HBox.margin>
-				</Label>
-				<ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-					<image>
-						<Image url="@../../Logout.png" />
-					</image>
-					<HBox.margin>
-						<Insets right="10.0" />
-					</HBox.margin>
-				</ImageView>
-			</children>
-		</HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="381.0">
+               <children>
+                  <Label fx:id="lblUsername" text="Label">
+                     <font>
+                        <Font name="Segoe UI" size="28.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblType" text="Label">
+                     <font>
+                        <Font name="Segoe UI" size="28.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="243.0">
+               <children>
+                  <Label text="Sair" textFill="#422800">
+                     <font>
+                        <Font name="Segoe UI" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Logout.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
 	</children>
 </VBox>
