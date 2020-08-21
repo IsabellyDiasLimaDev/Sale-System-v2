@@ -22,4 +22,17 @@ public class Product {
 			e.printStackTrace();
 		}
 	}
+	public void consult() {
+		try {
+			VBox root = (VBox) FXMLLoader.load(getClass().getResource("ConferProduct.fxml"));
+			Scene scene = new Scene(root, 775, 622);
+			Stage newWindow = new Stage();
+			newWindow.setTitle("M&N Bebidas");
+			newWindow.setResizable(false);
+			newWindow.setScene(scene);
+			newWindow.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -3,7 +3,7 @@ package br.com.mnbebidas.entities;
 public class ListCashierProduct {
 
 	private int position;
-	private long noBarCode;
+	private String noBarCode;
 	private String nmDescription;
 	private int noQuantity;
 	private double noValue;
@@ -17,11 +17,11 @@ public class ListCashierProduct {
 		this.position = position;
 	}
 
-	public long getNoBarCode() {
+	public String getNoBarCode() {
 		return noBarCode;
 	}
 
-	public void setNoBarCode(long noBarCode) {
+	public void setNoBarCode(String noBarCode) {
 		this.noBarCode = noBarCode;
 	}
 

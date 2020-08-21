@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -66,6 +67,7 @@ public class ProductController implements Initializable {
 	double sale = 0;
 	double amount = 0;
 	double profit = 0;
+	List<ProductClass> products = new ArrayList<ProductClass>();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -76,7 +78,7 @@ public class ProductController implements Initializable {
 		this.tableProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldProduct, newProduct) -> {
 			if (newProduct != null) {
 				txtfAmountPaid.setText(Double.toString(newProduct.getNoAmountPaid()));
-				txtfBarCode.setText(Double.toString(newProduct.getNoBarCode()));
+				txtfBarCode.setText(newProduct.getNoBarCode());
 				txtfDescription.setText(newProduct.getNmDescription());
 				txtfId.setText(Integer.toString(newProduct.getCdProduct()));
 				txtfProfit.setText(Double.toString(newProduct.getNoProfit()));
@@ -92,7 +94,7 @@ public class ProductController implements Initializable {
 
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-				//7891095600847
+				// 7891095600847
 				sale = Double.parseDouble(txtfSaleValue.getText());
 				amount = Double.parseDouble(txtfAmountPaid.getText());
 				profit = sale - amount;
@@ -111,7 +113,7 @@ public class ProductController implements Initializable {
 	public void loadListProduct() {
 		try {
 			AppRepository<ProductClass> productRepository = new AppProductJDBC();
-			List<ProductClass> products = productRepository.selecionar();
+			products = productRepository.selecionar();
 			ObservableList<ProductClass> observableListProducts = FXCollections.observableArrayList(products);
 			this.tableProduct.getItems().setAll(observableListProducts);
 
@@ -127,6 +129,7 @@ public class ProductController implements Initializable {
 	public void buttonCreate_Action() {
 		this.isCreate = true;
 		this.txtfAmountPaid.setText("");
+		this.expirationDate.setValue(null);
 		this.txtfBarCode.setText("");
 		this.txtfDescription.setText("");
 		this.txtfId.setText("");
@@ -146,7 +149,7 @@ public class ProductController implements Initializable {
 		ProductClass product = new ProductClass();
 		try {
 			if (this.isCreate == true) {
-				product.setNoBarCode(Long.parseLong(txtfBarCode.getText()));
+				product.setNoBarCode(txtfBarCode.getText());
 				product.setNmDescription(txtfDescription.getText());
 				product.setDtExpirationDate(expirationDate.getValue().toString());
 				product.setNoAmountPaid(Double.parseDouble(txtfAmountPaid.getText()));
@@ -154,6 +157,8 @@ public class ProductController implements Initializable {
 				product.setNoProfit(profit);
 				product.setNoQuantity(Integer.parseInt(txtfQuantity.getText()));
 				repositoryProduct.inserir(product);
+				products.add(product);
+				loadListProduct();
 				Alert mensagem = new Alert(AlertType.INFORMATION);
 				mensagem.setTitle("Concluido");
 				mensagem.setHeaderText("Produto cadastrado");
@@ -164,7 +169,7 @@ public class ProductController implements Initializable {
 				double amount = Double.parseDouble(txtfAmountPaid.getText());
 				double profit = sale - amount;
 				txtfProfit.setText(Double.toString(profit));
-				product.setNoBarCode(Long.parseLong(txtfBarCode.getText()));
+				product.setNoBarCode(txtfBarCode.getText());
 				product.setNmDescription(txtfDescription.getText());
 				product.setDtExpirationDate(expirationDate.getValue().toString());
 				product.setNoAmountPaid(Double.parseDouble(txtfAmountPaid.getText()));
@@ -173,6 +178,7 @@ public class ProductController implements Initializable {
 				product.setNoQuantity(Integer.parseInt(txtfQuantity.getText()));
 				product.setCdProduct(Integer.parseInt(txtfId.getText()));
 				repositoryProduct.atualizar(product);
+				loadListProduct();
 				Alert mensagem = new Alert(AlertType.INFORMATION);
 				mensagem.setTitle("Concluido");
 				mensagem.setHeaderText("Produto atualizado");
@@ -196,15 +202,23 @@ public class ProductController implements Initializable {
 
 	public void deleteProduct() throws SQLException {
 		AppRepository<ProductClass> repositoryProduct = new AppProductJDBC();
-		ProductClass product = new ProductClass();
-		product.setCdProduct(Integer.parseInt(txtfId.getText()));
+		int id = Integer.parseInt(txtfId.getText());
 		Alert mensagem = new Alert(AlertType.WARNING);
 		mensagem.setTitle("Atenção!");
-		mensagem.setHeaderText("Exclusão de usuário");
-		mensagem.setContentText("Tem certeza que deseja excluir este usuário?");
+		mensagem.setHeaderText("Exclusão de produto");
+		mensagem.setContentText("Tem certeza que deseja excluir este produto?");
 		Optional<ButtonType> result = mensagem.showAndWait();
 		if (result.isPresent() && result.get() == ButtonType.OK) {
-			repositoryProduct.excluir(product);
+			repositoryProduct.excluir(id);
+			loadListProduct();
+			this.txtfAmountPaid.setText("");
+			this.expirationDate.setValue(null);
+			this.txtfBarCode.setText("");
+			this.txtfDescription.setText("");
+			this.txtfId.setText("");
+			this.txtfProfit.setText("");
+			this.txtfQuantity.setText("");
+			this.txtfSaleValue.setText("");
 		}
 	}
 

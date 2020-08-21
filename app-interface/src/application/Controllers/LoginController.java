@@ -2,6 +2,7 @@ package application.Controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import application.Views.Menu;
 import br.com.mnbebidas.entities.UserSession;
@@ -28,6 +29,7 @@ public class LoginController {
 
 		String user = txtfUser.getText().toString();
 		String password = txtfPassword.getText().toString();
+		ArrayList<UserSession> userSession = new ArrayList<UserSession>();
 		try {
 			AppLoginJDBC login = new AppLoginJDBC();
 			Boolean verifyUser = login.verifyUser(user, password);
@@ -39,16 +41,14 @@ public class LoginController {
 				mensagem.setContentText("Verifique seu usuário e senha e tente novamente!");
 				mensagem.showAndWait();
 			} else {
+				login.selectUser(user, password);
+				
 				if (verifyAdmin) {
-					UserSession session = new UserSession(user, "Administrador");
 					Menu menu = new Menu();
 					menu.createMenuAdmin(loginButton);
-					System.out.println(session.getUserName() + " " + session.getPrivileges());
 				} else {
-					UserSession session = new UserSession(user, "Funcionário");
 					Menu menu = new Menu();
 					menu.createMenu(loginButton);
-					System.out.println(session.getUserName() + " " + session.getPrivileges());
 				}
 			}
 		} catch (SQLException e) {

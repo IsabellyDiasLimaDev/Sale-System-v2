@@ -34,7 +34,7 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 				datefor = rs.getDate("dtExpirationDate");
 				formatador.format(datefor);
 				product.setCdProduct(rs.getInt("cdProduct"));
-				product.setNoBarCode(rs.getLong("noBarCode"));
+				product.setNoBarCode(rs.getString("noBarCode"));
 				product.setNmDescription(rs.getString("nmDescription"));
 				product.setDtExpirationDate(formatador.format(datefor));
 				product.setNoAmountPaid(rs.getDouble("noAmountPaid"));
@@ -65,7 +65,7 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 			// Date datefor = null;
 			// datefor = formater.parse(data);
 			// formater.applyPattern("yyyy-MM-dd");
-			comando.setLong(1, entidade.getNoBarCode());
+			comando.setString(1, entidade.getNoBarCode());
 			comando.setString(2, entidade.getNmDescription());
 			comando.setString(3, entidade.getDtExpirationDate());
 			comando.setDouble(4, entidade.getNoAmountPaid());
@@ -89,7 +89,7 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 					"root", "Dias042012");
 			PreparedStatement comando = con.prepareStatement(
 					"UPDATE tblproduct SET noBarCode = ?, nmDescription = ?, dtExpirationDate = ?, noAmountPaid = ?, noSaleValue = ?,noProfit = ?, noQuantity = ? WHERE cdProduct = ?;");
-			comando.setDouble(1, entidade.getNoBarCode());
+			comando.setString(1, entidade.getNoBarCode());
 			comando.setString(2, entidade.getNmDescription());
 			comando.setString(3, entidade.getDtExpirationDate());
 			comando.setDouble(4, entidade.getNoAmountPaid());
@@ -107,13 +107,16 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 	}
 
 	@Override
-	public void excluir(ProductClass entidade) throws SQLException {
+	public void excluir(int id) throws SQLException {
 		Connection con = null;
+		boolean isNext = false;
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
 					"root", "Dias042012");
 			PreparedStatement comando = con.prepareStatement("DELETE FROM tblProduct WHERE cdProduct = ?");
-			comando.setInt(1, entidade.getCdProduct());
+			comando.setInt(1, id);
+			comando.execute();
+			System.out.println(isNext);
 		} finally {
 			if (con != null) {
 				con.close();
@@ -121,7 +124,7 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 		}
 	}
 
-	public ArrayList<CashierClass> selectProductToCashier(long noBarCode) throws SQLException {
+	public ArrayList<CashierClass> selectProductToCashier(String noBarCode) throws SQLException {
 		Connection con = null;
 		boolean isNext = false;
 		ArrayList<CashierClass> product = new ArrayList<CashierClass>();
@@ -130,7 +133,7 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 					"root", "Dias042012");
 			String query = "SELECT nmDescription, noSaleValue FROM tblProduct WHERE noBarCode = ?;";
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setDouble(1, noBarCode);
+			ps.setString(1, noBarCode);
 			ResultSet rs = ps.executeQuery();
 			isNext = rs.next();
 			if (isNext) {

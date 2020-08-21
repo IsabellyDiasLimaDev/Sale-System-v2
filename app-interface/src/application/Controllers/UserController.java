@@ -98,15 +98,14 @@ public class UserController implements Initializable {
 	public void deleteUser() {
 		try {
 			AppRepository<UserClass> repositoryUser = new AppUserJDBC();
-			UserClass user = new UserClass();
-			user.setCdLogin(Integer.parseInt(txtfId.getText()));
+			int id = Integer.parseInt(txtfId.getText());
 			Alert mensagem = new Alert(AlertType.WARNING);
-			mensagem.setTitle("Atenï¿½ï¿½o!");
-			mensagem.setHeaderText("Exclusï¿½o de usuï¿½rio");
-			mensagem.setContentText("Tem certeza que deseja excluir este usuï¿½rio?");
+			mensagem.setTitle("Atenção!");
+			mensagem.setHeaderText("Exclusão de usuário");
+			mensagem.setContentText("Tem certeza que deseja excluir este usuário?");
 			Optional<ButtonType> result = mensagem.showAndWait();
 			if (result.isPresent() && result.get() == ButtonType.OK) {
-				repositoryUser.excluir(user);
+				repositoryUser.excluir(id);
 			}
 
 		} catch (SQLException e) {

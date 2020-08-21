@@ -10,5 +10,5 @@ public interface AppRepository<T> {
 
 	void atualizar(T entidade) throws SQLException;
 
-	void excluir(T entidade) throws SQLException;
+	void excluir(int id) throws SQLException;
 }
