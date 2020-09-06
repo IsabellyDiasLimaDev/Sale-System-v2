@@ -3,12 +3,13 @@ package application.Views;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Menu {
-	public void createMenuAdmin(Button loginButton) {
-		Stage stage = (Stage) loginButton.getScene().getWindow();
+	public void createMenuAdmin(Label lbl) {
+		Stage stage = (Stage) lbl.getScene().getWindow();
 		stage.close();
 		try {
 			VBox root = (VBox) FXMLLoader.load(getClass().getResource("MenuAdmin.fxml"));
@@ -23,8 +24,8 @@ public class Menu {
 		}
 	}
 
-	public void createMenu(Button loginButton) {
-		Stage stage = (Stage) loginButton.getScene().getWindow();
+	public void createMenu(Label lbl) {
+		Stage stage = (Stage) lbl.getScene().getWindow();
 		stage.close();
 		try {
 			VBox root = (VBox) FXMLLoader.load(getClass().getResource("/application/Views/MenuFunc.fxml"));

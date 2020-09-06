@@ -131,15 +131,14 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
 					"root", "Dias042012");
-			String query = "SELECT nmDescription, noSaleValue FROM tblProduct WHERE noBarCode = ?;";
+			String query = "SELECT cdProduct,nmDescription, noSaleValue FROM tblProduct WHERE noBarCode = ?;";
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, noBarCode);
 			ResultSet rs = ps.executeQuery();
 			isNext = rs.next();
 			if (isNext) {
-				CashierClass products = new CashierClass();
-				products.setNmDescription(rs.getString("nmDescription"));
-				products.setNoSaleValue(rs.getDouble("noSaleValue"));
+				CashierClass products = CashierClass.getInstance(rs.getInt("cdProduct"),rs.getString("nmDescription"), rs.getDouble("noSaleValue"));
+
 				product.add(products);
 				System.out.println(products.getNmDescription());
 			}

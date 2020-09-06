@@ -114,23 +114,21 @@
 					</children>
 				</HBox>
 				<HBox alignment="CENTER_RIGHT" prefHeight="89.0"
-					prefWidth="243.0">
+					prefWidth="367.0">
 					<children>
-						<Label text="Sair" textFill="#422800">
+						<Label onMouseClicked="#backToMenu"
+							text="Voltar para o menu">
 							<font>
 								<Font name="Segoe UI" size="18.0" />
 							</font>
-							<HBox.margin>
-								<Insets right="5.0" />
-							</HBox.margin>
 						</Label>
-						<ImageView fitHeight="44.0" fitWidth="44.0"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fx:id="imgBack" fitHeight="36.0"
+							fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
 							<image>
-								<Image url="@../../Logout.png" />
+								<Image url="@../../back.png" />
 							</image>
 							<HBox.margin>
-								<Insets right="10.0" />
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</ImageView>
 					</children>

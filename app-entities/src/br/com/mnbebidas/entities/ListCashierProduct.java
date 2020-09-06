@@ -3,6 +3,7 @@ package br.com.mnbebidas.entities;
 public class ListCashierProduct {
 
 	private int position;
+	private int cdProduct;
 	private String noBarCode;
 	private String nmDescription;
 	private int noQuantity;
@@ -15,6 +16,14 @@ public class ListCashierProduct {
 
 	public void setPosition(int position) {
 		this.position = position;
+	}
+
+	public int getCdProduct() {
+		return cdProduct;
+	}
+
+	public void setCdProduct(int cdProduct) {
+		this.cdProduct = cdProduct;
 	}
 
 	public String getNoBarCode() {
@@ -59,7 +68,8 @@ public class ListCashierProduct {
 
 	@Override
 	public String toString() {
-		return position + "   " + noBarCode + "  " + nmDescription + "          " + noQuantity + "    " + noValue + "   " + totalValue;
+		return position + " " + cdProduct + " " + noBarCode + " " + nmDescription + " " + noQuantity + " " + noValue
+				+ " " + totalValue;
 	}
 
 }

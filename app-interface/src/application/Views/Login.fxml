@@ -21,7 +21,7 @@
 		<Pane prefHeight="64.0" prefWidth="600.0"
 			style="-fx-background-color: #FFD500;">
 			<children>
-				<Label layoutX="14.0" layoutY="20.0" text="Login"
+				<Label fx:id="lbl" layoutX="14.0" layoutY="20.0" text="Login"
 					textFill="#422800">
 					<font>
 						<Font name="Segoe UI" size="20.0" />
@@ -55,9 +55,9 @@
 						<PasswordField fx:id="txtfPassword" layoutX="78.0"
 							layoutY="191.0"
 							style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;" />
-						<Button fx:id="loginButton" onAction="#loginAction"
-							layoutX="78.0" layoutY="232.0" mnemonicParsing="false"
-							prefHeight="32.0" prefWidth="149.0"
+						<Button fx:id="loginButton" layoutX="78.0" layoutY="232.0"
+							mnemonicParsing="false" onAction="#loginAction" prefHeight="32.0"
+							prefWidth="149.0"
 							style="-fx-background-color: #459F92; -fx-border-color: #459F92; -fx-border-radius: 6;"
 							text="Entrar" textFill="WHITE" />
 					</children>

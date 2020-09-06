@@ -7,11 +7,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.cell.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0"
@@ -22,8 +24,8 @@
 		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0"
 			prefWidth="600.0" style="-fx-background-color: #FFD500;">
 			<children>
-				<Label layoutX="14.0" layoutY="20.0" text="Produtos"
-					textFill="#422800">
+				<Label fx:id="lbl" layoutX="14.0" layoutY="20.0"
+					text="Produtos" textFill="#422800">
 					<font>
 						<Font name="Segoe UI" size="20.0" />
 					</font>
@@ -78,12 +80,15 @@
 								<PropertyValueFactory property="noProfit" />
 							</cellValueFactory>
 						</TableColumn>
-						<TableColumn prefWidth="79.0" text="Quantidade" >
-						<cellValueFactory>
+						<TableColumn prefWidth="79.0" text="Quantidade">
+							<cellValueFactory>
 								<PropertyValueFactory property="noQuantity" />
 							</cellValueFactory>
-							</TableColumn>
+						</TableColumn>
 					</columns>
+					<HBox.margin>
+						<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+					</HBox.margin>
 				</TableView>
 			</children>
 		</HBox>
@@ -260,6 +265,31 @@
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
+			</children>
+		</HBox>
+		<HBox alignment="CENTER_RIGHT" prefHeight="69.0"
+			prefWidth="600.0">
+			<children>
+				<HBox alignment="CENTER_RIGHT" prefHeight="89.0"
+					prefWidth="367.0">
+					<children>
+						<Label onMouseClicked="#backToMenu"
+							text="Voltar para o menu">
+							<font>
+								<Font name="Segoe UI" size="18.0" />
+							</font>
+						</Label>
+						<ImageView fx:id="imgBack" fitHeight="36.0"
+							fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../back.png" />
+							</image>
+							<HBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</HBox.margin>
+						</ImageView>
+					</children>
+				</HBox>
 			</children>
 		</HBox>
 	</children>

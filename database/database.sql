@@ -27,8 +27,14 @@ INSERT INTO tblLogin (nmEmail,nmUser,nmPassword,dsType,dsStatus) VALUES ("wickdi
 
 CREATE TABLE tblCashier
 (
-    cdCashier INTEGER
+    cdCashier  INTEGER,
+	opening    BOOLEAN NOT NULL,
+    closing    BOOLEAN NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+select * from tblcashier;
 
 ALTER TABLE tblCashier
 ADD CONSTRAINT PK_Cashier_Cashier PRIMARY KEY (cdCashier);
@@ -36,14 +42,20 @@ ADD CONSTRAINT PK_Cashier_Cashier PRIMARY KEY (cdCashier);
 ALTER TABLE tblCashier
 MODIFY cdCashier  INTEGER AUTO_INCREMENT;
 
-CREATE TABLE tblCashierUser
+CREATE TABLE tblCashierLogin
 (
-    cdLogin   INTEGER,
-    cdCashier  INTEGER,
-    PRIMARY KEY (cdLogin,cdCashier),
-    opening DATETIME NOT NULL,
-    closing DATETIME NOT NULL
+	cdCashierLogin INTEGER,
+    cdLogin        INTEGER NOT NULL,
+    cdCashier      INTEGER NOT NULL,
+    created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+ALTER TABLE tblCashierLogin
+ADD CONSTRAINT PK_Login_Cashier PRIMARY KEY (cdCashierLogin);
+
+ALTER TABLE tblCashierLogin
+MODIFY cdCashierLogin  INTEGER AUTO_INCREMENT;
 
 CREATE TABLE tblAddress
 (
@@ -154,7 +166,7 @@ FOREIGN KEY (cd_Cashier) REFERENCES tblCashier(cdCashier);
 CREATE TABLE tblTypePay
 (
     cdTypePay INTEGER,
-    nmTypePay ENUM('Cartão de Débito','Cartão de crédito','Dinheiro')
+    nmTypePay CHAR(100) NOT NULL
 );
 
 ALTER TABLE tblTypePay
@@ -172,12 +184,26 @@ CREATE TABLE tblTypeSale
 
 CREATE TABLE tblSaleProduct
 (
+    cdSaleProd INTEGER,
     cdSale     INTEGER,
     cdProduct  INTEGER,
-    PRIMARY KEY(cdSale,cdProduct),
     noValue    DECIMAL(8),
     noQuantity INTEGER
 );
+
+ALTER TABLE tblSaleProduct
+ADD CONSTRAINT PK_SaleProduct_SaleProduct PRIMARY KEY (cdSaleProd);
+
+ALTER TABLE tblSaleProduct
+MODIFY cdSaleProd  INTEGER AUTO_INCREMENT;
+
+ALTER TABLE tblSaleProduct
+ADD CONSTRAINT FK_Sale_Product
+FOREIGN KEY (cdSale) REFERENCES tblSale(cdSale);
+
+ALTER TABLE tblSaleProduct
+ADD CONSTRAINT FK_Product_Sale
+FOREIGN KEY (cdProduct) REFERENCES tblProduct(cdProduct);
 
 CREATE TABLE tblCompany
 (
@@ -228,7 +254,6 @@ FOREIGN KEY (cd_Client) REFERENCES tblClient(cdClient);
 CREATE TABLE tblPayment
 (
 	cdPay      	   INTEGER,
-    cd_Client     INTEGER,
     cd_TypePay 	   INTEGER     NOT NULL,
     cd_Sale    	   INTEGER     NOT NULL,
     noParcialValue DECIMAL(10) NOT NULL
@@ -239,10 +264,6 @@ ADD CONSTRAINT PK_Payment_Payment PRIMARY KEY (cdPay);
 
 ALTER TABLE tblPayment
 MODIFY cdPay  INTEGER AUTO_INCREMENT;
-
-ALTER TABLE tblPayment
-ADD CONSTRAINT FK_Client_Payment
-FOREIGN KEY (cd_Client) REFERENCES tblClient(cdClient);
 
 ALTER TABLE tblPayment
 ADD CONSTRAINT FK_TypePay_Payment

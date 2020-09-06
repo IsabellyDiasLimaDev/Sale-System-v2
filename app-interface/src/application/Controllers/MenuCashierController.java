@@ -5,6 +5,9 @@ import java.util.ResourceBundle;
 
 import application.Views.Cashier;
 import application.Views.ListCashiers;
+import application.Views.ListCashiersOfStatus;
+import application.Views.Menu;
+import application.Views.MenuCashier;
 import br.com.mnbebidas.entities.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,8 +24,8 @@ public class MenuCashierController implements Initializable {
 	private ImageView imgList;
 	
 	public void openCashier() {
-		Cashier cashier = new Cashier();
-		cashier.start(imgUnlock);
+		ListCashiers cashier = new ListCashiers();
+		cashier.start(imgList);
 	}
 	
 	public void setSession() {
@@ -31,8 +34,18 @@ public class MenuCashierController implements Initializable {
 	}
 	
 	public void openList() {
-		ListCashiers cashier = new ListCashiers();
+		ListCashiersOfStatus cashier = new ListCashiersOfStatus();
 		cashier.start(imgList);
+	}
+	
+	public void backToMenu() {
+		String privilegies = UserSession.getInstace().getPrivileges();
+		if(privilegies.equals("Administrador")) {
+			new Menu().createMenuAdmin(lblUsername);
+		}
+		else {
+			new Menu().createMenu(lblUsername);
+		}
 	}
 
 	@Override
@@ -40,5 +53,7 @@ public class MenuCashierController implements Initializable {
 		setSession();
 		
 	}
+	
+	
 	
 }

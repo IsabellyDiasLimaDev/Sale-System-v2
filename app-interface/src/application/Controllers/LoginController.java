@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -24,6 +25,9 @@ public class LoginController {
 
 	@FXML
 	private Button loginButton;
+	
+	@FXML
+	private Label lbl;
 
 	public void loginAction() throws SQLException, IOException {
 
@@ -45,10 +49,10 @@ public class LoginController {
 				
 				if (verifyAdmin) {
 					Menu menu = new Menu();
-					menu.createMenuAdmin(loginButton);
+					menu.createMenuAdmin(lbl);
 				} else {
 					Menu menu = new Menu();
-					menu.createMenu(loginButton);
+					menu.createMenu(lbl);
 				}
 			}
 		} catch (SQLException e) {

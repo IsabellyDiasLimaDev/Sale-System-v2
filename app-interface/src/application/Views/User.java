@@ -13,7 +13,7 @@ public class User {
 		stage.close();
 		try {
 			VBox root = (VBox) FXMLLoader.load(getClass().getResource("ManageUser.fxml"));
-			Scene scene = new Scene(root, 600, 582);
+			Scene scene = new Scene(root, 622, 649);
 			Stage newWindow = new Stage();
 			newWindow.setTitle("M&N Bebidas");
 			newWindow.setResizable(false);

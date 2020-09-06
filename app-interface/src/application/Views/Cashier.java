@@ -2,14 +2,14 @@ package application.Views;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Cashier {
 
-	public void start(ImageView imgLock) {
-		Stage stage = (Stage) imgLock.getScene().getWindow();
+	public void start(Label lbl) {
+		Stage stage = (Stage) lbl.getScene().getWindow();
 		stage.close();
 		try {
 			VBox root = (VBox) FXMLLoader.load(getClass().getResource("Cashier.fxml"));

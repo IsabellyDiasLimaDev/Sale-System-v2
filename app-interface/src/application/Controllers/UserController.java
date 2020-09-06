@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import application.Views.Menu;
 import br.com.mnbebidas.entities.UserClass;
+import br.com.mnbebidas.entities.UserSession;
 import br.com.mnbebidas.repositories.impl.AppUserJDBC;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
 import javafx.collections.FXCollections;
@@ -18,6 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -48,6 +51,8 @@ public class UserController implements Initializable {
 	private ComboBox<String> typeCombo;
 	@FXML
 	private ComboBox<String> statusCombo;
+	@FXML
+	private Label lbl;
 
 	private Boolean isCreate;
 	private UserClass userSelected;
@@ -73,6 +78,16 @@ public class UserController implements Initializable {
 		statusCombo.getItems().addAll("Ativo", "Inativo");
 		statusCombo.setDisable(true);
 
+	}
+	
+	public void backToMenu() {
+		String privilegies = UserSession.getInstace().getPrivileges();
+		if(privilegies.equals("Administrador")) {
+			new Menu().createMenuAdmin(lbl);
+		}
+		else {
+			new Menu().createMenu(lbl);
+		}
 	}
 
 	public void buttonCreate_Action() {

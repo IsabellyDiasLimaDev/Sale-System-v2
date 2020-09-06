@@ -11,8 +11,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import application.Views.Menu;
 import br.com.mnbebidas.entities.ProductClass;
 import br.com.mnbebidas.entities.UserClass;
+import br.com.mnbebidas.entities.UserSession;
 import br.com.mnbebidas.repositories.impl.AppProductJDBC;
 import br.com.mnbebidas.repositories.impl.AppUserJDBC;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
@@ -27,6 +29,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -61,6 +64,8 @@ public class ProductController implements Initializable {
 	private Button deleteButton;
 	@FXML
 	private Button cancelButton;
+	@FXML
+	private Label lbl;
 
 	private boolean isCreate;
 	private ProductClass selectedProduct;
@@ -142,6 +147,16 @@ public class ProductController implements Initializable {
 	public void buttonUpdate_Action() {
 		this.isCreate = false;
 		enableEditing(true);
+	}
+	
+	public void backToMenu() {
+		String privilegies = UserSession.getInstace().getPrivileges();
+		if(privilegies.equals("Administrador")) {
+			new Menu().createMenuAdmin(lbl);
+		}
+		else {
+			new Menu().createMenu(lbl);
+		}
 	}
 
 	public void createProduct() {
