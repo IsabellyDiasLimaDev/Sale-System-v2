@@ -14,7 +14,7 @@
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0"
 	prefWidth="410.0" xmlns="http://javafx.com/javafx/11.0.1"
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.Controllers.ListCashierController">
+	fx:controller="application.Controllers.ListCashierCloseController">
 	<children>
 		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0"
 			prefWidth="600.0" style="-fx-background-color: #FFD500;">

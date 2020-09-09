@@ -69,6 +69,7 @@ public class UserController implements Initializable {
 				txtfUser.setText(newUser.getNmUser());
 				txtfPassword.setText(newUser.getNmPassword());
 				typeCombo.setValue(newUser.getDsType());
+				statusCombo.setValue(newUser.getDsStatus());
 				txtfId.setText(Integer.toString(newUser.getCdLogin()));
 				this.seletedUser = newUser;
 			}
@@ -79,13 +80,12 @@ public class UserController implements Initializable {
 		statusCombo.setDisable(true);
 
 	}
-	
+
 	public void backToMenu() {
 		String privilegies = UserSession.getInstace().getPrivileges();
-		if(privilegies.equals("Administrador")) {
+		if (privilegies.equals("Administrador")) {
 			new Menu().createMenuAdmin(lbl);
-		}
-		else {
+		} else {
 			new Menu().createMenu(lbl);
 		}
 	}
@@ -121,6 +121,7 @@ public class UserController implements Initializable {
 			Optional<ButtonType> result = mensagem.showAndWait();
 			if (result.isPresent() && result.get() == ButtonType.OK) {
 				repositoryUser.excluir(id);
+				loadUserTable();
 			}
 
 		} catch (SQLException e) {
@@ -164,6 +165,7 @@ public class UserController implements Initializable {
 				mensagem.setHeaderText("Usu�rio cadastrado");
 				mensagem.setContentText("Usu�rio foi cadastrado com sucesso");
 				mensagem.showAndWait();
+				loadUserTable();
 			} else {
 				user.setNmEmail(txtfEmail.getText());
 				user.setNmUser(txtfUser.getText());
@@ -177,6 +179,7 @@ public class UserController implements Initializable {
 				mensagem.setHeaderText("Usu�rio atualizado");
 				mensagem.setContentText("Usu�rio foi atualizado com sucesso");
 				mensagem.showAndWait();
+				loadUserTable();
 			}
 
 		} catch (Exception e) {
@@ -190,6 +193,7 @@ public class UserController implements Initializable {
 
 	public void buttonCancel_Action() {
 		enableEditing(false);
+		statusCombo.setDisable(true);
 		this.tableUser.getSelectionModel().selectFirst();
 	}
 

@@ -93,4 +93,28 @@ public class AppLoginJDBC {
 		}
 	}
 
+	public boolean isAtivo(String nmUser) throws SQLException {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet resultSet = null;
+		boolean isActive = false;
+
+		String sql = "SELECT * FROM tblLogin WHERE dsStatus = ? and nmUser = ?";
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
+					"root", "Dias042012");
+			ps = con.prepareStatement(sql);
+			ps.setString(1, "Ativo");
+			ps.setString(2, nmUser);
+			resultSet = ps.executeQuery();
+			isActive = resultSet.next();
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+		return isActive;
+	}
+
 }

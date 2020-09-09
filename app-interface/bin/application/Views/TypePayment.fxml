@@ -12,28 +12,38 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.TypePaymentController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0"
+	prefWidth="543.0" xmlns="http://javafx.com/javafx/11.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.Controllers.TypePaymentController">
 	<children>
-		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="74.0" prefWidth="543.0" style="-fx-background-color: #FFD500;">
+		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="74.0"
+			prefWidth="543.0" style="-fx-background-color: #FFD500;">
 			<children>
-				<Label layoutX="14.0" layoutY="20.0" text="Formas de Pagamento" textFill="#422800">
+				<Label layoutX="14.0" layoutY="20.0"
+					text="Formas de Pagamento" textFill="#422800">
 					<font>
 						<Font name="Segoe UI" size="20.0" />
 					</font>
 				</Label>
-				<HBox layoutX="-88.0" layoutY="15.0" prefHeight="100.0" prefWidth="200.0" />
+				<HBox layoutX="-88.0" layoutY="15.0" prefHeight="100.0"
+					prefWidth="200.0" />
 			</children>
 		</Pane>
 		<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
 			<children>
-				<VBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="156.0">
+				<VBox alignment="CENTER_LEFT" prefHeight="90.0"
+					prefWidth="156.0">
 					<children>
 						<Label text="Escolha:">
 							<VBox.margin>
 								<Insets left="5.0" />
 							</VBox.margin>
 						</Label>
-						<ComboBox fx:id="typePayCombo" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;">
+						<ComboBox fx:id="typePayCombo" prefHeight="30.0"
+							prefWidth="150.0"
+							style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;">
 							<VBox.margin>
 								<Insets left="5.0" top="5.0" />
 							</VBox.margin>
@@ -46,7 +56,8 @@
 			<children>
 				<VBox alignment="CENTER" prefHeight="100.0" prefWidth="157.0">
 					<children>
-						<Label fx:id="lblDebit" disable="true" text="Valor em Débito">
+						<Label fx:id="lblDebit" disable="true"
+							text="Valor em Débito">
 							<font>
 								<Font name="Segoe UI" size="16.0" />
 							</font>
@@ -63,7 +74,8 @@
 				</VBox>
 				<VBox alignment="CENTER" prefHeight="100.0" prefWidth="157.0">
 					<children>
-						<Label fx:id="lblCredit" disable="true" text="Valor em Crédito">
+						<Label fx:id="lblCredit" disable="true"
+							text="Valor em Crédito">
 							<font>
 								<Font name="Segoe UI" size="16.0" />
 							</font>
@@ -80,7 +92,8 @@
 				</VBox>
 				<VBox alignment="CENTER" prefHeight="100.0" prefWidth="157.0">
 					<children>
-						<Label fx:id="lblCash" disable="true" text="Valor em Dinheiro">
+						<Label fx:id="lblCash" disable="true"
+							text="Valor em Dinheiro">
 							<font>
 								<Font name="Segoe UI" size="16.0" />
 							</font>
@@ -97,28 +110,38 @@
 				</VBox>
 			</children>
 		</HBox>
-		<HBox alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="367.0">
+		<HBox alignment="CENTER_RIGHT" prefHeight="89.0"
+			prefWidth="367.0">
 			<children>
-				<Button fx:id="setPay" mnemonicParsing="false" onAction="#setPayment" style="-fx-background-color: #28a745; -fx-border-color: #28a745; -fx-text-fill: #FFF; -fx-border-radius: 5;" text="Finalizar">
+				<Button fx:id="setPay" mnemonicParsing="false"
+					onAction="#setPayment"
+					style="-fx-background-color: #28a745; -fx-border-color: #28a745; -fx-text-fill: #FFF; -fx-border-radius: 5;"
+					text="Finalizar">
 					<HBox.margin>
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 					</HBox.margin>
 				</Button>
-				<Button fx:id="cancelPay" mnemonicParsing="false" style="-fx-background-color: #dc3545; -fx-border-color: #dc3545; -fx-text-fill: #FFF; -fx-border-radius: 5;" text="Cancelar">
+				<Button fx:id="cancelPay" mnemonicParsing="false"
+					onAction="#cancelpayment"
+					style="-fx-background-color: #dc3545; -fx-border-color: #dc3545; -fx-text-fill: #FFF; -fx-border-radius: 5;"
+					text="Cancelar">
 					<HBox.margin>
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 					</HBox.margin>
 				</Button>
 			</children>
 		</HBox>
-		<HBox alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="367.0">
+		<HBox alignment="CENTER_RIGHT" prefHeight="89.0"
+			prefWidth="367.0">
 			<children>
-				<Label onMouseClicked="#backToCashier" text="Voltar para o caixa">
+				<Label onMouseClicked="#backToCashier"
+					text="Voltar para o caixa">
 					<font>
 						<Font name="Segoe UI" size="18.0" />
 					</font>
 				</Label>
-				<ImageView fx:id="imgBack" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+				<ImageView fx:id="imgBack" fitHeight="36.0"
+					fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
 					<image>
 						<Image url="@../../back.png" />
 					</image>

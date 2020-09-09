@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.mnbebidas.entities.CashierClass;
+import br.com.mnbebidas.entities.ListCashierProduct;
 import br.com.mnbebidas.entities.ProductClass;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
 
@@ -131,13 +132,13 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
 					"root", "Dias042012");
-			String query = "SELECT cdProduct,nmDescription, noSaleValue FROM tblProduct WHERE noBarCode = ?;";
+			String query = "SELECT cdProduct,nmDescription, noSaleValue, noQuantity FROM tblProduct WHERE noBarCode = ?;";
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, noBarCode);
 			ResultSet rs = ps.executeQuery();
 			isNext = rs.next();
 			if (isNext) {
-				CashierClass products = CashierClass.getInstance(rs.getInt("cdProduct"),rs.getString("nmDescription"), rs.getDouble("noSaleValue"));
+				CashierClass products = CashierClass.getInstance(rs.getInt("cdProduct"),rs.getString("nmDescription"), rs.getDouble("noSaleValue"), rs.getInt("noQuantity"));
 
 				product.add(products);
 				System.out.println(products.getNmDescription());
@@ -149,5 +150,25 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 		}
 
 		return product;
+	}
+	
+	public void updateQuantityProduct(ArrayList<ListCashierProduct> products, int qtd) throws SQLException {
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
+					"root", "Dias042012");
+			for(int i = 0; i< qtd; i++) {
+				PreparedStatement comando = con.prepareStatement(
+						"UPDATE tblproduct SET noQuantity = ? WHERE cdProduct = ?;");
+				int newQuantity = products.get(i).getNoQuantityProduct() - products.get(i).getNoQuantity();
+				comando.setInt(1, newQuantity);
+				comando.setInt(2, products.get(i).getCdProduct());
+				comando.execute();
+			}
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
 	}
 }

@@ -34,22 +34,42 @@
 		<HBox alignment="CENTER_LEFT" prefHeight="72.0" prefWidth="670.0">
 			<children>
 				<Button fx:id="conferProduct" mnemonicParsing="false"
-					onAction="#buttonConfer_Action" prefHeight="33.0" prefWidth="195.0"
+					onAction="#buttonConfer_Action" prefHeight="33.0" prefWidth="143.0"
 					style="-fx-background-color: #006B7B; -fx-text-fill: #fff; -fx-border-color: #006B7B; -fx-border-radius: 5;"
-					text="Consultar ou alterar produtos">
+					text="Consultar produtos">
 					<HBox.margin>
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 					</HBox.margin>
 				</Button>
-				<Button fx:id="updateList" mnemonicParsing="false"
-					onAction="#buttonUpdateList_Action" prefHeight="33.0"
-					prefWidth="163.0"
+				<Button fx:id="updateProduct" mnemonicParsing="false"
+					onAction="#buttonUpdateProduct_Action" prefHeight="33.0"
+					prefWidth="117.0"
 					style="-fx-background-color: #006B7B; -fx-text-fill: #fff; -fx-border-color: #006B7B; -fx-border-radius: 5;"
-					text="Alterar lista de compras">
+					text="Alterar produtos">
 					<HBox.margin>
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 					</HBox.margin>
 				</Button>
+				<Button fx:id="updateButton" mnemonicParsing="false"
+					onAction="#buttonUpdate_Action" prefHeight="33.0" prefWidth="70.0"
+					style="-fx-background-color: #006B7B; -fx-text-fill: #fff; -fx-border-color: #006B7B; -fx-border-radius: 5;"
+					text="Alterar">
+					<HBox.margin>
+						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+					</HBox.margin>
+				</Button>
+				<Button fx:id="removeButton" mnemonicParsing="false"
+					onAction="#buttonRemove_Action" prefHeight="33.0" prefWidth="83.0"
+					style="-fx-background-color: #006B7B; -fx-text-fill: #fff; -fx-border-color: #006B7B; -fx-border-radius: 5;"
+					text="Remover">
+					<HBox.margin>
+						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+					</HBox.margin>
+				</Button>
+			</children>
+		</HBox>
+		<HBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="670.0">
+			<children>
 				<Button fx:id="newSale" mnemonicParsing="false"
 					onAction="#newSale" prefHeight="33.0" prefWidth="95.0"
 					style="-fx-background-color: #006B7B; -fx-text-fill: #fff; -fx-border-color: #006B7B; -fx-border-radius: 5;"
@@ -69,7 +89,6 @@
 				</Button>
 			</children>
 		</HBox>
-		<HBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="670.0" />
 		<HBox prefHeight="309.0" prefWidth="580.0"
 			style="-fx-border-color: #001B14; -fx-border-radius: 6;">
 			<children>

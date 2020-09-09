@@ -7,21 +7,25 @@ public class CashierClass {
 	private int cdProduct;
 	private String nmDescription;
 	private double noSaleValue;
+	private int noQuantity;
 
-	private CashierClass(int cdProduct, String nmDescription, double noSaleValue) {
+	private CashierClass(int cdProduct, String nmDescription, double noSaleValue, int noQuantity) {
 
 		this.cdProduct = cdProduct;
 		this.nmDescription = nmDescription;
 		this.noSaleValue = noSaleValue;
+		this.noQuantity = noQuantity;
 	}
 
-	public static CashierClass getInstance(int cdProduct, String nmDescription, double noSaleValue) {
+	public static CashierClass getInstance(int cdProduct, String nmDescription, double noSaleValue, int noQuantity) {
 		if (instance == null) {
-			instance = new CashierClass(cdProduct, nmDescription, noSaleValue);
+			instance = new CashierClass(cdProduct, nmDescription, noSaleValue, noQuantity);
 		} else {
 			instance.setCdProduct(cdProduct);
 			instance.setNmDescription(nmDescription);
 			instance.setNoSaleValue(noSaleValue);
+			instance.setNoQuantity(noQuantity);
+			
 		}
 		return instance;
 	}
@@ -57,5 +61,15 @@ public class CashierClass {
 	public void setNoSaleValue(double noSaleValue) {
 		this.noSaleValue = noSaleValue;
 	}
+
+	public int getNoQuantity() {
+		return noQuantity;
+	}
+
+	public void setNoQuantity(int noQuantity) {
+		this.noQuantity = noQuantity;
+	}
+	
+	
 
 }

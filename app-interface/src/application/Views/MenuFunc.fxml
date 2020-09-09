@@ -54,7 +54,7 @@
 				</VBox>
 				<VBox alignment="TOP_CENTER" prefHeight="336.0" prefWidth="115.0">
 					<children>
-						<ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fx:id="imgCashier" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#clickCashier" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../cashier.png" />
 							</image>
@@ -125,24 +125,48 @@
 				<Insets top="5.0" />
 			</VBox.margin>
 		</HBox>
-		<HBox alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="600.0">
+		<HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="600.0">
 			<children>
-				<Label text="Sair" textFill="#422800">
-					<font>
-						<Font name="Segoe UI" size="18.0" />
-					</font>
-					<HBox.margin>
-						<Insets right="5.0" />
-					</HBox.margin>
-				</Label>
-				<ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-					<image>
-						<Image url="@../../Logout.png" />
-					</image>
-					<HBox.margin>
-						<Insets right="10.0" />
-					</HBox.margin>
-				</ImageView>
+				<HBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="367.0">
+					<children>
+						<Label fx:id="lblUsername" text="Usuário:">
+							<font>
+								<Font name="Segoe UI" size="25.0" />
+							</font>
+							<HBox.margin>
+								<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+							</HBox.margin>
+						</Label>
+						<Label fx:id="lblUsername" text="Label">
+							<font>
+								<Font name="Segoe UI" size="25.0" />
+							</font>
+							<HBox.margin>
+								<Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
+							</HBox.margin>
+						</Label>
+					</children>
+				</HBox>
+				<HBox alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="243.0">
+					<children>
+						<Label fx:id="lblLogout" onMouseClicked="#clickLogout" text="Sair" textFill="#422800">
+							<font>
+								<Font name="Segoe UI" size="18.0" />
+							</font>
+							<HBox.margin>
+								<Insets right="5.0" />
+							</HBox.margin>
+						</Label>
+						<ImageView fx:id="imgLogout" fitHeight="44.0" fitWidth="44.0" onMouseClicked="#clickLogout" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../Logout.png" />
+							</image>
+							<HBox.margin>
+								<Insets right="10.0" />
+							</HBox.margin>
+						</ImageView>
+					</children>
+				</HBox>
 			</children>
 		</HBox>
 	</children>

@@ -15,31 +15,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0"
-	prefWidth="775.0" xmlns="http://javafx.com/javafx/11.0.1"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.Controllers.ProductController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.ProductController">
 	<children>
-		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0"
-			prefWidth="600.0" style="-fx-background-color: #FFD500;">
+		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="74.0" prefWidth="775.0" style="-fx-background-color: #FFD500;">
 			<children>
-				<Label fx:id="lbl" layoutX="14.0" layoutY="20.0"
-					text="Produtos" textFill="#422800">
+				<Label fx:id="lbl" layoutX="14.0" layoutY="20.0" text="Produtos" textFill="#422800">
 					<font>
 						<Font name="Segoe UI" size="20.0" />
 					</font>
 				</Label>
 			</children>
 		</Pane>
-		<HBox prefHeight="251.0" prefWidth="599.0"
-			style="-fx-background-color: #F2FEDC;">
+		<HBox prefHeight="251.0" prefWidth="599.0" style="-fx-background-color: #F2FEDC;">
 			<VBox.margin>
 				<Insets top="20.0" />
 			</VBox.margin>
 			<children>
-				<TableView fx:id="tableProduct" prefHeight="251.0"
-					prefWidth="816.0">
+				<TableView fx:id="tableProduct" prefHeight="251.0" prefWidth="816.0">
 					<columns>
 						<TableColumn prefWidth="50.0" text="Id">
 							<cellValueFactory>
@@ -53,26 +45,22 @@
 						</TableColumn>
 						<TableColumn prefWidth="185.0" text="Descrição">
 							<cellValueFactory>
-								<PropertyValueFactory
-									property="nmDescription" />
+								<PropertyValueFactory property="nmDescription" />
 							</cellValueFactory>
 						</TableColumn>
 						<TableColumn prefWidth="83.0" text="Validade">
 							<cellValueFactory>
-								<PropertyValueFactory
-									property="dtExpirationDate" />
+								<PropertyValueFactory property="dtExpirationDate" />
 							</cellValueFactory>
 						</TableColumn>
 						<TableColumn prefWidth="89.0" text="Valor pago">
 							<cellValueFactory>
-								<PropertyValueFactory
-									property="noAmountPaid" />
+								<PropertyValueFactory property="noAmountPaid" />
 							</cellValueFactory>
 						</TableColumn>
 						<TableColumn prefWidth="98.0" text="Valor de venda">
 							<cellValueFactory>
-								<PropertyValueFactory
-									property="noSaleValue" />
+								<PropertyValueFactory property="noSaleValue" />
 							</cellValueFactory>
 						</TableColumn>
 						<TableColumn prefWidth="71.0" text="Lucro">
@@ -94,8 +82,7 @@
 		</HBox>
 		<HBox prefHeight="100.0" prefWidth="200.0">
 			<children>
-				<VBox alignment="CENTER_LEFT" prefHeight="100.0"
-					prefWidth="70.0">
+				<VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="70.0">
 					<children>
 						<Label text="Id">
 							<VBox.margin>
@@ -109,8 +96,7 @@
 						</TextField>
 					</children>
 				</VBox>
-				<VBox alignment="CENTER_LEFT" prefHeight="100.0"
-					prefWidth="172.0">
+				<VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="172.0">
 					<children>
 						<Label text="Código de barras">
 							<VBox.margin>
@@ -124,8 +110,7 @@
 						</TextField>
 					</children>
 				</VBox>
-				<VBox alignment="CENTER_LEFT" prefHeight="100.0"
-					prefWidth="172.0">
+				<VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="172.0">
 					<children>
 						<Label text="Descrição">
 							<VBox.margin>
@@ -139,24 +124,21 @@
 						</TextField>
 					</children>
 				</VBox>
-				<VBox alignment="CENTER_LEFT" prefHeight="100.0"
-					prefWidth="148.0">
+				<VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="148.0">
 					<children>
 						<Label text="Data de validade">
 							<VBox.margin>
 								<Insets left="5.0" />
 							</VBox.margin>
 						</Label>
-						<DatePicker fx:id="expirationDate"
-							style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;">
+						<DatePicker fx:id="expirationDate" style="-fx-background-color: #FFF; -fx-border-color: #E5E5DE; -fx-border-radius: 5;">
 							<VBox.margin>
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</VBox.margin>
 						</DatePicker>
 					</children>
 				</VBox>
-				<VBox alignment="CENTER_LEFT" prefHeight="100.0"
-					prefWidth="148.0">
+				<VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="148.0">
 					<children>
 						<Label text="Valor pago">
 							<VBox.margin>
@@ -170,8 +152,7 @@
 						</TextField>
 					</children>
 				</VBox>
-				<VBox alignment="CENTER_LEFT" prefHeight="100.0"
-					prefWidth="148.0">
+				<VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="148.0">
 					<children>
 						<Label text="Valor de venda">
 							<VBox.margin>
@@ -189,8 +170,7 @@
 		</HBox>
 		<HBox prefHeight="100.0" prefWidth="200.0">
 			<children>
-				<VBox alignment="CENTER_LEFT" prefHeight="100.0"
-					prefWidth="128.0">
+				<VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="128.0">
 					<children>
 						<Label text="Lucro">
 							<VBox.margin>
@@ -204,8 +184,7 @@
 						</TextField>
 					</children>
 				</VBox>
-				<VBox alignment="CENTER_LEFT" prefHeight="100.0"
-					prefWidth="128.0">
+				<VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="128.0">
 					<children>
 						<Label text="Quantidade">
 							<VBox.margin>
@@ -221,66 +200,45 @@
 				</VBox>
 			</children>
 		</HBox>
-		<HBox alignment="CENTER_RIGHT" prefHeight="75.0"
-			prefWidth="600.0" style="-fx-background-color: #F2FEDC;">
+		<HBox alignment="CENTER_RIGHT" prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: #F2FEDC;">
 			<children>
-				<Button fx:id="createButton" mnemonicParsing="false"
-					onAction="#buttonCreate_Action" prefHeight="30.0" prefWidth="65.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #fff;"
-					text="Inserir">
+				<Button fx:id="createButton" mnemonicParsing="false" onAction="#buttonCreate_Action" prefHeight="36.0" prefWidth="65.0" style="-fx-background-color: #17a2b8; -fx-text-fill: #fff; -fx-border-color: #17a2b8; -fx-border-radius: 5;" text="Inserir">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
-				<Button fx:id="updateButton" mnemonicParsing="false"
-					onAction="#buttonUpdate_Action" prefHeight="30.0" prefWidth="80.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;"
-					text="Atualizar">
+				<Button fx:id="updateButton" mnemonicParsing="false" onAction="#buttonUpdate_Action" prefHeight="36.0" prefWidth="80.0" style="-fx-background-color: #007bff; -fx-text-fill: #FFF; -fx-border-color: #007bff; -fx-border-radius: 5;" text="Atualizar">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
-				<Button fx:id="saveButton" mnemonicParsing="false"
-					onAction="#createProduct" prefHeight="30.0" prefWidth="65.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #fff;"
-					text="Salvar">
+				<Button fx:id="saveButton" mnemonicParsing="false" onAction="#createProduct" prefHeight="36.0" prefWidth="65.0" style="-fx-background-color: #28a745; -fx-text-fill: #fff; -fx-border-color: #28a745; -fx-border-color: 5;" text="Salvar">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
-				<Button fx:id="deleteButton" mnemonicParsing="false"
-					onAction="#buttonDelete_Action" prefHeight="30.0" prefWidth="72.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;"
-					text="Excluir">
+				<Button fx:id="deleteButton" mnemonicParsing="false" onAction="#buttonDelete_Action" prefHeight="36.0" prefWidth="72.0" style="-fx-background-color: #dc3545; -fx-text-fill: #FFF; -fx-border-color: #dc3545; -fx-border-radius: 5;" text="Excluir">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
-				<Button fx:id="cancelButton" layoutX="533.0" layoutY="28.0"
-					mnemonicParsing="false" onAction="#buttonCancel_Action"
-					prefHeight="30.0" prefWidth="72.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;"
-					text="Cancelar">
+				<Button fx:id="cancelButton" layoutX="533.0" layoutY="28.0" mnemonicParsing="false" onAction="#buttonCancel_Action" prefHeight="36.0" prefWidth="72.0" style="-fx-background-color: #ff8800; -fx-text-fill: #FFF; -fx-border-color: #ff8800; -fx-border-radius: 5;" text="Cancelar">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
 			</children>
 		</HBox>
-		<HBox alignment="CENTER_RIGHT" prefHeight="69.0"
-			prefWidth="600.0">
+		<HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="600.0">
 			<children>
-				<HBox alignment="CENTER_RIGHT" prefHeight="89.0"
-					prefWidth="367.0">
+				<HBox alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="367.0">
 					<children>
-						<Label onMouseClicked="#backToMenu"
-							text="Voltar para o menu">
+						<Label onMouseClicked="#backToMenu" text="Voltar para o menu">
 							<font>
 								<Font name="Segoe UI" size="18.0" />
 							</font>
 						</Label>
-						<ImageView fx:id="imgBack" fitHeight="36.0"
-							fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+						<ImageView fx:id="imgBack" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../back.png" />
 							</image>

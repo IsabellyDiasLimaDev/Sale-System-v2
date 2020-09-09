@@ -194,32 +194,32 @@
 			prefWidth="600.0" style="-fx-background-color: #F2FEDC;">
 			<children>
 				<Button fx:id="createButton" mnemonicParsing="false"
-					onAction="#buttonCreate_Action" prefHeight="30.0" prefWidth="65.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #fff;"
+					onAction="#buttonCreate_Action" prefHeight="36.0" prefWidth="65.0"
+					style="-fx-background-color: #17a2b8; -fx-text-fill: #fff; -fx-border-color: #17a2b8; -fx-border-radius: 5;"
 					text="Inserir">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
 				<Button fx:id="updateButton" mnemonicParsing="false"
-					onAction="#buttonUpdate_Action" prefHeight="30.0" prefWidth="80.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;"
+					onAction="#buttonUpdate_Action" prefHeight="36.0" prefWidth="80.0"
+					style="-fx-background-color: #007bff; -fx-text-fill: #FFF; -fx-border-color: #007bff; -fx-border-radius: 5;"
 					text="Atualizar">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
 				<Button fx:id="saveButton" mnemonicParsing="false"
-					onAction="#createUser" prefHeight="30.0" prefWidth="65.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #fff;"
+					onAction="#createUser" prefHeight="36.0" prefWidth="65.0"
+					style="-fx-background-color: #28a745; -fx-text-fill: #fff; -fx-border-color: #28a745; -fx-border-color: 5;"
 					text="Salvar">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
 					</HBox.margin>
 				</Button>
 				<Button fx:id="deleteButton" mnemonicParsing="false"
-					onAction="#buttonDelete_Action" prefHeight="30.0" prefWidth="72.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;"
+					onAction="#buttonDelete_Action" prefHeight="36.0" prefWidth="72.0"
+					style="-fx-background-color: #dc3545; -fx-text-fill: #FFF; -fx-border-color: #dc3545; -fx-border-radius: 5;"
 					text="Excluir">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />
@@ -227,8 +227,8 @@
 				</Button>
 				<Button fx:id="cancelButton" layoutX="533.0" layoutY="28.0"
 					mnemonicParsing="false" onAction="#buttonCancel_Action"
-					prefHeight="30.0" prefWidth="72.0"
-					style="-fx-background-color: #4D4637; -fx-text-fill: #FFF;"
+					prefHeight="36.0" prefWidth="72.0"
+					style="-fx-background-color: #ff8800; -fx-text-fill: #FFF; -fx-border-color: #ff8800; -fx-border-radius: 5;"
 					text="Cancelar">
 					<HBox.margin>
 						<Insets left="5.0" right="5.0" />

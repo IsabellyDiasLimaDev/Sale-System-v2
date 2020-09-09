@@ -9,6 +9,7 @@ public class ListCashierProduct {
 	private int noQuantity;
 	private double noValue;
 	private double totalValue;
+	private int noQuantityProduct;
 
 	public int getPosition() {
 		return position;
@@ -64,6 +65,14 @@ public class ListCashierProduct {
 
 	public void setTotalValue(double totalValue) {
 		this.totalValue = totalValue;
+	}
+
+	public int getNoQuantityProduct() {
+		return noQuantityProduct;
+	}
+
+	public void setNoQuantityProduct(int noQuantityProduct) {
+		this.noQuantityProduct = noQuantityProduct;
 	}
 
 	@Override

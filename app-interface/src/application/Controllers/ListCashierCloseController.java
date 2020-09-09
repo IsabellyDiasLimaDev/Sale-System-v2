@@ -6,13 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import application.Views.Cashier;
 import application.Views.MenuCashier;
 import br.com.mnbebidas.entities.CashierSession;
-import br.com.mnbebidas.entities.CashierUserClass;
-import br.com.mnbebidas.entities.UserSession;
 import br.com.mnbebidas.repositories.impl.AppCashierJDBC;
-import br.com.mnbebidas.repositories.impl.AppListCashierJDBC;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,8 +20,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
-public class ListCashierController implements Initializable {
+public class ListCashierCloseController implements Initializable {
 	@FXML
 	private ListView<CashierSession> listCashiers;
 	@FXML
@@ -64,33 +61,26 @@ public class ListCashierController implements Initializable {
 		this.listCashiers.getSelectionModel().selectedItemProperty().addListener((obs, oldCashier, newCashier) -> {
 			try {
 				if (newCashier != null) {
-					AppCashierJDBC cashierjdbc = new AppCashierJDBC();
-					AppListCashierJDBC userlogin = new AppListCashierJDBC();
+					AppCashierJDBC cashier = new AppCashierJDBC();
 					id = newCashier.getCdCashier();
-					boolean opening = true;
+					boolean opening = false;
 					boolean closing = true;
-					CashierUserClass cashiers = CashierUserClass.getInstace(UserSession.getInstace().getCdLogin(), id);
 					CashierSession session = CashierSession.getInstance(id, opening, closing);
-					System.out.println(id);
-					System.out.println(cashiers);
-					boolean isClosing = cashierjdbc.verifyStatusCashier(session);
-					if (isClosing) {
-						session.setClosing(false);
-						userlogin.userCashier(cashiers);
-						cashierjdbc.atualizar(session);
-						Cashier cashier = new Cashier();
-						cashier.start(lblCashier);
-					} else {
-						Alert mensagem = new Alert(AlertType.ERROR);
-						mensagem.setTitle("Erro!");
-						mensagem.setHeaderText("Caixa já aberto");
-						mensagem.setContentText("Este caixa já está aberto! Selecione-o na lista de caixas abertos.");
-						mensagem.showAndWait();
-					}
-
+					cashier.atualizar(session);
+					Alert mensagem = new Alert(AlertType.INFORMATION);
+					mensagem.setTitle("Caixa Fechado");
+					mensagem.setHeaderText("Sucesso");
+					mensagem.setContentText("Caixa Fechado com sucesso!");
+					mensagem.showAndWait();
+					Stage stage = (Stage) lblCashier.getScene().getWindow();
+					stage.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				Alert mensagem = new Alert(AlertType.ERROR);
+				mensagem.setTitle("Erro!");
+				mensagem.setHeaderText("Erro ao fechar o caixa");
+				mensagem.setContentText("Houve um erro ao fechar o caixa!" + e.getMessage());
+				mensagem.showAndWait();
 			}
 		});
 

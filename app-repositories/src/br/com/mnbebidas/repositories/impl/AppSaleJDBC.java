@@ -5,13 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.mnbebidas.entities.SaleClass;
 import br.com.mnbebidas.entities.SaleSession;
-import br.com.mnbebidas.entities.UserClass;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
 
 public class AppSaleJDBC implements AppRepository<SaleClass> {
@@ -56,14 +53,17 @@ public class AppSaleJDBC implements AppRepository<SaleClass> {
 
 	}
 	
-	public void getId() throws SQLException {
+	public void getId(int cdLogin) throws SQLException {
 		Connection con = null;
-		String sql = "SELECT MAX(cdSale) as 'cdSale' from tblSale";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT MAX(cdSale) as 'cdSale' from tblSale WHERE cd_Login = ?";
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
 					"root", "Dias042012");
-			Statement comando = con.createStatement();
-			ResultSet rs = comando.executeQuery(sql);
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, cdLogin);
+			rs = ps.executeQuery();
 			if(rs.next()) {
 				SaleSession.getInstance(rs.getInt("cdSale"));
 			}

@@ -51,7 +51,7 @@
 				<VBox alignment="TOP_CENTER" prefHeight="200.0"
 					prefWidth="372.0">
 					<children>
-						<ImageView fitHeight="70.0" fitWidth="70.0"
+						<ImageView fitHeight="70.0" onMouseClicked="#closeCashier" fitWidth="70.0"
 							pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../lock.png" />

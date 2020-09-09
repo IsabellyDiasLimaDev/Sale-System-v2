@@ -59,6 +59,10 @@ public class CashierController implements Initializable {
 	@FXML
 	private Button closeSale;
 	@FXML
+	private Button updateButton;
+	@FXML
+	private Button removeButton;
+	@FXML
 	private ImageView imgBack;
 	@FXML
 	private Label lbl;
@@ -69,12 +73,20 @@ public class CashierController implements Initializable {
 	private int quantity = 1;
 	private int quantityTotal = 0;
 	private boolean isNew = false;
+	private boolean isUpdate = false;
 	private int positionOfProduct = 0;
 	private ListCashierProduct selectedProduct;
+
 	ArrayList<ListCashierProduct> listProducts = new ArrayList<ListCashierProduct>();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		this.tableProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldProduct, newProduct) -> {
+			if (newProduct != null) {
+				this.selectedProduct = newProduct;
+			}
+		});
 
 		txtfQuantity.textProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -95,11 +107,10 @@ public class CashierController implements Initializable {
 						double oldTotalValue = totalValueProduct;
 						totalValueProduct = quantity * products.get(0).getNoSaleValue();
 						txtfTotalValueProduct.setText(Double.toString(totalValueProduct));
-						if (!isNew) {
+						if (!isNew && !isUpdate) {
 							int positionInitial = positionOfProduct;
 							quantityTotal -= oldValueQuantity;
 							quantityTotal += quantity;
-							System.out.println("Quantidade total " + quantityTotal);
 							totalValueSale -= oldTotalValue;
 							totalValueSale += totalValueProduct;
 							txtfTotalValueSale.setText(Double.toString(totalValueSale));
@@ -109,11 +120,32 @@ public class CashierController implements Initializable {
 							setProduct.setNmDescription(products.get(0).getNmDescription());
 							setProduct.setNoQuantity(quantity);
 							setProduct.setNoValue(products.get(0).getNoSaleValue());
+							setProduct.setNoQuantityProduct(products.get(0).getNoQuantity());
 							setProduct.setTotalValue(totalValueProduct);
 							listProducts.set(positionInitial -= 1, setProduct);
 							ObservableList<ListCashierProduct> observableListProducts = FXCollections
 									.observableArrayList(listProducts);
 							// listProduct.setItems(observableListProducts);
+							tableProduct.getItems().setAll(observableListProducts);
+						}
+						if (isUpdate) {
+							int position = selectedProduct.getPosition() - 1;
+							quantityTotal -= oldValueQuantity;
+							quantityTotal += quantity;
+							totalValueSale -= oldTotalValue;
+							totalValueSale += totalValueProduct;
+							txtfTotalValueSale.setText(Double.toString(totalValueSale));
+							setProduct.setCdProduct(products.get(0).getCdProduct());
+							setProduct.setPosition(positionOfProduct);
+							setProduct.setNoBarCode(valueCode);
+							setProduct.setNmDescription(products.get(0).getNmDescription());
+							setProduct.setNoQuantity(quantity);
+							setProduct.setNoValue(products.get(0).getNoSaleValue());
+							setProduct.setNoQuantityProduct(products.get(0).getNoQuantity());
+							setProduct.setTotalValue(totalValueProduct);
+							listProducts.set(position, setProduct);
+							ObservableList<ListCashierProduct> observableListProducts = FXCollections
+									.observableArrayList(listProducts);
 							tableProduct.getItems().setAll(observableListProducts);
 						}
 					}
@@ -136,7 +168,7 @@ public class CashierController implements Initializable {
 					ArrayList<CashierClass> products = productRepository.selectProductToCashier(valueCode);
 
 					ListCashierProduct setProduct = new ListCashierProduct();
-					if (products != null) {
+					if (products != null && !isUpdate) {
 						isNew = true;
 						quantity = 1;
 						totalValueProduct = quantity * products.get(0).getNoSaleValue();
@@ -145,6 +177,7 @@ public class CashierController implements Initializable {
 						System.out.println(products.get(0).getCdProduct());
 						txtfQuantity.setText(Integer.toString(quantity));
 						txtfTotalValueProduct.setText(Double.toString(totalValueProduct));
+						setProduct.setNoQuantityProduct(products.get(0).getNoQuantity());
 						setProduct.setCdProduct(products.get(0).getCdProduct());
 						setProduct.setPosition(positionOfProduct += 1);
 						setProduct.setNoBarCode(valueCode);
@@ -177,35 +210,32 @@ public class CashierController implements Initializable {
 		tableProduct.setDisable(false);
 		newSale.setDisable(true);
 		closeSale.setDisable(false);
+		clearAllItems();
 	}
 
 	public void setsale() throws IllegalStateException, SQLException {
-		if(listProducts != null) {
-			//Instancia o objeto venda
-			SaleClass getSale = SaleClass.getInstance(UserSession.getInstace().getCdLogin(), CashierSession.getInstace().getCdCashier(), quantityTotal, totalValueSale);
-			//Adiciona no banco de dados
+		if (listProducts != null) {
+			// Instancia o objeto venda
+			SaleClass getSale = SaleClass.getInstance(UserSession.getInstace().getCdLogin(),
+					CashierSession.getInstace().getCdCashier(), quantityTotal, totalValueSale);
+			// Adiciona no banco de dados
 			AppSaleJDBC sale = new AppSaleJDBC();
 			sale.inserir(getSale);
-			//Chama o metodo para retornar o ultimo id de venda
-			sale.getId();
-			//Chama o metodo para adicionar os produtos ma tableproducts
+			// Chama o metodo para retornar o ultimo id de venda
+			sale.getId(UserSession.getInstace().getCdLogin());
+			// Chama o metodo para adicionar os produtos ma tableproducts
 			setProductsOnSale();
-			//Abre a tela de forma de pagamento
+			// Abre a tela de forma de pagamento
 			new TypePayment().start();
-			closeSale.setDisable(true);
-			//Limpa os txtf e a table
-			//Inicializa a lista de produtos
+			desabilityTxtfAndTable();
 		}
 	}
 
 	public void setProductsOnSale() throws IllegalStateException, SQLException {
 		SaleProductJDBC sp = new SaleProductJDBC();
-		// Falta alterar a quantidade de produtos quando a venda é feita
-		/*
-		 * Passos: buscar a quantidade no banco, armazenar em uma variavel diminuir com
-		 * a quantidade total de compra atualizar a quantidade de novo no banco
-		 */
+		AppProductJDBC p = new AppProductJDBC();
 		sp.insert(listProducts, listProducts.size(), SaleSession.getInstance().getCdSale());
+		p.updateQuantityProduct(listProducts, listProducts.size());
 	}
 
 	public void changeTotalValue(boolean isNew) {
@@ -222,11 +252,29 @@ public class CashierController implements Initializable {
 		product.consult();
 	}
 
+	public void buttonRemove_Action() {
+		this.tableProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldProduct, newProduct) -> {
+			if (newProduct != null) {
+				this.selectedProduct = newProduct;
+			}
+		});
+		if (this.selectedProduct != null) {
+			int position = this.selectedProduct.getPosition() - 1;
+			listProducts.remove(position);
+			positionOfProduct = 0;
+			for (int i = 0; i < listProducts.size(); i++) {
+				listProducts.get(i).setPosition(positionOfProduct += 1);
+			}
+			ObservableList<ListCashierProduct> observableListProducts = FXCollections.observableArrayList(listProducts);
+			tableProduct.getItems().setAll(observableListProducts);
+		}
+	}
+
 	public void backToMenu() {
 		new MenuCashier().start(imgBack);
 	}
 
-	public void buttonUpdateList_Action() {
+	public void updateList() {
 		this.tableProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldProduct, newProduct) -> {
 			if (newProduct != null) {
 				txtfValue.setText(Double.toString(newProduct.getNoValue()));
@@ -240,8 +288,49 @@ public class CashierController implements Initializable {
 		});
 	}
 
-	public void buttonUpdate_Action() {
+	public void buttonUpdateProduct_Action() {
+		String privileges = UserSession.getInstace().getPrivileges();
+		if (privileges.equals("Administrator")) {
+			new Product().consult();
+		} else {
+			Alert mensagem = new Alert(AlertType.ERROR);
+			mensagem.setTitle("Erro!");
+			mensagem.setHeaderText("Somente administrador");
+			mensagem.setContentText("Acesso somente para os administradores do sistema!");
+			mensagem.showAndWait();
 
+		}
+	}
+
+	public void buttonUpdate_Action() {
+		txtfCode.setDisable(true);
+		isUpdate = true;
+		updateList();
+	}
+
+	public void clearAllItems() throws IndexOutOfBoundsException {
+		txtfCode.setText("");
+		txtfDescription.setText("");
+		txtfQuantity.setText("");
+		txtfTotalValueProduct.setText("");
+		txtfTotalValueSale.setText("");
+		txtfValue.setText("");
+		listProducts.clear();
+		tableProduct.getItems().clear();
+		positionOfProduct = 0;
+		totalValueSale = 0f;
+		totalValueProduct = 0f;
+		quantity = 1;
+		quantityTotal = 0;
+		isNew = false;
+	}
+
+	public void desabilityTxtfAndTable() {
+		txtfCode.setDisable(true);
+		txtfQuantity.setDisable(true);
+		tableProduct.setDisable(true);
+		newSale.setDisable(false);
+		closeSale.setDisable(true);
 	}
 
 }

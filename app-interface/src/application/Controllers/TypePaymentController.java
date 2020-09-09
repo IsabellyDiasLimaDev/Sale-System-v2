@@ -4,11 +4,11 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import application.Views.Cashier;
 import br.com.mnbebidas.entities.PaymentClass;
 import br.com.mnbebidas.entities.SaleClass;
 import br.com.mnbebidas.entities.SaleSession;
 import br.com.mnbebidas.entities.TypePay;
+import br.com.mnbebidas.entities.UserSession;
 import br.com.mnbebidas.repositories.impl.AppPaymentJDBC;
 import br.com.mnbebidas.repositories.impl.AppSaleJDBC;
 import javafx.beans.value.ChangeListener;
@@ -90,7 +90,7 @@ public class TypePaymentController implements Initializable {
 					txtfDebit.setDisable(false);
 					lblDebit.setDisable(false);
 					txtfCash.setDisable(false);
-					lblCash.setDisable(false);
+					lblCash  .setDisable(false);
 					typePayCombo.setDisable(true);
 					TypePay.getInstance(5, newValue);
 				} else if (newValue.equals("Cartão de Crédito/Dinheiro")) {
@@ -116,10 +116,18 @@ public class TypePaymentController implements Initializable {
 		cancelPay.setDisable(enable);
 
 	}
+	
+public void cancelpayment() {
+	txtfCash.setText("");
+	txtfCredit.setText("");
+	txtfDebit.setText("");
+	typePayCombo.setDisable(false);
+	disableEditing(true);
+}
 
 	public void setPayment() throws SQLException {
 		AppSaleJDBC newSaleJDBC = new AppSaleJDBC();
-		newSaleJDBC.getId();
+		newSaleJDBC.getId(UserSession.getInstace().getCdLogin());
 		if (payment.equals("Cartão de Débito")) {
 			int cdTypePay = TypePay.getInstance().getCdTypePay();
 			int cdSale = SaleSession.getInstance().getCdSale();
@@ -180,6 +188,8 @@ public class TypePaymentController implements Initializable {
 			System.out.println(SaleClass.getInstance());
 			new AppPaymentJDBC().inserir(pay2);
 		}
+		
+		backToCashier();
 	}
 
 }

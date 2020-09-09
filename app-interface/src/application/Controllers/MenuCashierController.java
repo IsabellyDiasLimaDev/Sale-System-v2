@@ -25,7 +25,7 @@ public class MenuCashierController implements Initializable {
 	
 	public void openCashier() {
 		ListCashiers cashier = new ListCashiers();
-		cashier.start(imgList);
+		cashier.startOpen(imgList);
 	}
 	
 	public void setSession() {
@@ -48,6 +48,9 @@ public class MenuCashierController implements Initializable {
 		}
 	}
 
+	public void closeCashier() {
+		new ListCashiers().startClose(imgList);
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setSession();
