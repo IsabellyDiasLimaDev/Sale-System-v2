@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import application.Views.Login;
 import application.Views.MenuCashier;
 import application.Views.Product;
+import application.Views.Sale;
 import application.Views.User;
 import br.com.mnbebidas.entities.UserSession;
 import javafx.fxml.FXML;
@@ -56,6 +57,10 @@ public class MenuController implements Initializable {
 	public void clickLogout() {
 		Login login = new Login();
 		login.logout(lblLogout);
+	}
+	
+	public void openSales() {
+		new Sale().start(imgProduct);
 	}
 
 	public void isNotAdmin() {

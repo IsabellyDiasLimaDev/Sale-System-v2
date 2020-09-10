@@ -87,7 +87,8 @@
 					prefWidth="115.0">
 					<children>
 						<ImageView fitHeight="70.0" fitWidth="70.0"
-							pickOnBounds="true" preserveRatio="true">
+							onMouseClicked="#openSales" pickOnBounds="true"
+							preserveRatio="true">
 							<image>
 								<Image url="@../../sale.png" />
 							</image>

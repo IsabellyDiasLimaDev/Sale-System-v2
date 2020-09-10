@@ -9,17 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0"
-	prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.Controllers.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.MenuController">
 	<children>
-		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0"
-			prefWidth="600.0" style="-fx-background-color: #FFD500;">
+		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #FFD500;">
 			<children>
-				<Label layoutX="14.0" layoutY="20.0" text="Menu"
-					textFill="#422800">
+				<Label layoutX="14.0" layoutY="20.0" text="Menu" textFill="#422800">
 					<font>
 						<Font name="Segoe UI" size="20.0" />
 					</font>
@@ -28,12 +22,9 @@
 		</Pane>
 		<HBox alignment="TOP_CENTER" prefHeight="336.0" prefWidth="600.0">
 			<children>
-				<VBox alignment="TOP_CENTER" prefHeight="336.0"
-					prefWidth="115.0">
+				<VBox alignment="TOP_CENTER" prefHeight="336.0" prefWidth="115.0">
 					<children>
-						<ImageView fx:id="imgProduct" fitHeight="70.0"
-							fitWidth="70.0" onMouseClicked="#isNotAdmin" opacity="0.3"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fx:id="imgProduct" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#isNotAdmin" opacity="0.3" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../box.png" />
 							</image>
@@ -41,15 +32,12 @@
 								<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 							</VBox.margin>
 						</ImageView>
-						<Label fx:id="lblProduct" onMouseClicked="#clickProduct"
-							opacity="0.3" text="Produtos">
+						<Label fx:id="lblProduct" onMouseClicked="#clickProduct" opacity="0.3" text="Produtos">
 							<font>
 								<Font name="Segoe UI" size="15.0" />
 							</font>
 						</Label>
-						<ImageView fitHeight="70.0" fitWidth="70.0"
-							onMouseClicked="#isNotAdmin" opacity="0.3" pickOnBounds="true"
-							preserveRatio="true">
+						<ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#isNotAdmin" opacity="0.3" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../provider.png" />
 							</image>
@@ -64,12 +52,9 @@
 						</Label>
 					</children>
 				</VBox>
-				<VBox alignment="TOP_CENTER" prefHeight="336.0"
-					prefWidth="115.0">
+				<VBox alignment="TOP_CENTER" prefHeight="336.0" prefWidth="115.0">
 					<children>
-						<ImageView fx:id="imgCashier" fitHeight="70.0"
-							fitWidth="70.0" onMouseClicked="#clickCashier"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fx:id="imgCashier" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#clickCashier" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../cashier.png" />
 							</image>
@@ -84,12 +69,9 @@
 						</Label>
 					</children>
 				</VBox>
-				<VBox alignment="TOP_CENTER" prefHeight="336.0"
-					prefWidth="115.0">
+				<VBox alignment="TOP_CENTER" prefHeight="336.0" prefWidth="115.0">
 					<children>
-						<ImageView fitHeight="70.0" fitWidth="70.0"
-							onMouseClicked="#isNotAdmin" opacity="0.3" pickOnBounds="true"
-							preserveRatio="true">
+						<ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#isNotAdmin" opacity="0.3" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../sale.png" />
 							</image>
@@ -104,12 +86,9 @@
 						</Label>
 					</children>
 				</VBox>
-				<VBox alignment="TOP_CENTER" prefHeight="336.0"
-					prefWidth="115.0">
+				<VBox alignment="TOP_CENTER" prefHeight="336.0" prefWidth="115.0">
 					<children>
-						<ImageView fx:id="imgUser" fitHeight="70.0"
-							fitWidth="70.0" onMouseClicked="#isNotAdmin" opacity="0.3"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fx:id="imgUser" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#isNotAdmin" opacity="0.3" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../users.png" />
 							</image>
@@ -117,20 +96,16 @@
 								<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 							</VBox.margin>
 						</ImageView>
-						<Label fx:id="lblUser" onMouseClicked="#clickUser"
-							opacity="0.3" text="Usuários">
+						<Label fx:id="lblUser" onMouseClicked="#clickUser" opacity="0.3" text="Usuários">
 							<font>
 								<Font name="Segoe UI" size="15.0" />
 							</font>
 						</Label>
 					</children>
 				</VBox>
-				<VBox alignment="TOP_CENTER" prefHeight="293.0"
-					prefWidth="115.0">
+				<VBox alignment="TOP_CENTER" prefHeight="293.0" prefWidth="115.0">
 					<children>
-						<ImageView fitHeight="70.0" fitWidth="70.0"
-							onMouseClicked="#isNotAdmin" opacity="0.3" pickOnBounds="true"
-							preserveRatio="true">
+						<ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#isNotAdmin" opacity="0.3" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../customers.png" />
 							</image>
@@ -150,11 +125,9 @@
 				<Insets top="5.0" />
 			</VBox.margin>
 		</HBox>
-		<HBox alignment="CENTER_RIGHT" prefHeight="69.0"
-			prefWidth="600.0">
+		<HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="600.0">
 			<children>
-				<HBox alignment="CENTER_LEFT" prefHeight="89.0"
-					prefWidth="367.0">
+				<HBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="367.0">
 					<children>
 						<Label fx:id="lblUsername" text="Usuário:">
 							<font>
@@ -174,11 +147,9 @@
 						</Label>
 					</children>
 				</HBox>
-				<HBox alignment="CENTER_RIGHT" prefHeight="89.0"
-					prefWidth="243.0">
+				<HBox alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="243.0">
 					<children>
-						<Label fx:id="lblLogout" onMouseClicked="#clickLogout"
-							text="Sair" textFill="#422800">
+						<Label fx:id="lblLogout" onMouseClicked="#clickLogout" text="Sair" textFill="#422800">
 							<font>
 								<Font name="Segoe UI" size="18.0" />
 							</font>
@@ -186,9 +157,7 @@
 								<Insets right="5.0" />
 							</HBox.margin>
 						</Label>
-						<ImageView fx:id="imgLogout" fitHeight="44.0"
-							fitWidth="44.0" onMouseClicked="#clickLogout" pickOnBounds="true"
-							preserveRatio="true">
+						<ImageView fx:id="imgLogout" fitHeight="44.0" fitWidth="44.0" onMouseClicked="#clickLogout" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../../Logout.png" />
 							</image>

@@ -13,7 +13,7 @@ public class Cashier {
 		stage.close();
 		try {
 			VBox root = (VBox) FXMLLoader.load(getClass().getResource("Cashier.fxml"));
-			Scene scene = new Scene(root, 600, 582);
+			Scene scene = new Scene(root, 670, 753);
 			Stage newWindow = new Stage();
 			newWindow.setTitle("M&N Bebidas");
 			newWindow.setResizable(false);

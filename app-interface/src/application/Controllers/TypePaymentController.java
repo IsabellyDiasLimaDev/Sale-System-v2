@@ -68,12 +68,12 @@ public class TypePaymentController implements Initializable {
 					txtfCredit.setDisable(false);
 					lblCredit.setDisable(false);
 					typePayCombo.setDisable(true);
-					TypePay.getInstance(2, newValue);
+					TypePay.getInstance(1, newValue);
 				} else if (newValue.equals("Cartão de Débito")) {
 					txtfDebit.setDisable(false);
 					lblDebit.setDisable(false);
 					typePayCombo.setDisable(true);
-					TypePay.getInstance(1, newValue);
+					TypePay.getInstance(2, newValue);
 				} else if (newValue.equals("Dinheiro")) {
 					txtfCash.setDisable(false);
 					lblCash.setDisable(false);

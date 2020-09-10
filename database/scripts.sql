@@ -1,5 +1,7 @@
 use dbpdv;
 
+INSERT INTO tbllogin (nmEmail,nmUser,nmPassword,dsType,dsStatus) VALUES ('administrador@gmail.com','administrador','1234567','Administrador','Ativo');
+
 describe tblcashierlogin;
 describe tbllogin;
 
@@ -39,13 +41,36 @@ tblSaleProduct.noValue as 'Valor total do produto',
 tblSaleProduct.noQuantity as 
 'Quantidade Total do produto', 
 tblProduct.cdProduct as 'Código do produto',
-tbltypepay.nmTypePay as 'Tipo de Pagamento',
-tblPayment.noParcialValue as 'Valor Parcial'
-FROM (((( tblSaleProduct
+tbltypepay.nmTypePay as 'Tipo de Pagamento'
+FROM ((( tblSaleProduct
 INNER JOIN tblSale ON tblSaleProduct.cdSale = tblSale.cdSale)
-INNER JOIN tblPayment ON tblSaleProduct.cdSale = tblPayment.cd_Sale)
-INNER JOIN tbltypepay ON tblPayment.cd_TypePay = tbltypepay.cdTypePay)
-INNER JOIN tblProduct ON tblSaleProduct.cdProduct = tblProduct.cdProduct) ORDER BY tblSaleProduct.cdSale;
+INNER JOIN tbltypepay ON tblSale.cd_TypePay = tbltypepay.cdTypePay)
+INNER JOIN tblProduct ON tblSaleProduct.cdProduct = tblProduct.cdProduct) WHERE tblSale.cdSale = 1 ORDER BY tblSaleProduct.cdSale;
+
+SELECT  tblSale.cdSale as 'Código da Venda',
+tblSale.noQuantityTotal as 'Quantidade total de produtos', 
+tblSale.noTotalValue as 'Valor total da venda', 
+tbltypepay.nmTypePay as 'Tipo de Pagamento'
+FROM (( tblSale
+INNER JOIN tbltypepay ON tblsale.cd_TypePay = tblSale.cdSale)
+INNER JOIN tbltypepay ON tblpayment.cd_TypePay = tbltypepay.cdTypePay);
+
+SELECT tblSale.cdSale,
+tblSale.noQuantityTotal,
+tblSale.noTotalValue,
+tbltypepay.nmTypePay,
+tblLogin.nmUser,
+tblCashier.cdCashier
+FROM (((
+tblSale
+INNER JOIN tblTypePay ON tblSale.cd_TypePay = tbltypepay.cdTypePay)
+INNER JOIN tblLogin ON tblSale.cd_Login = tblLogin.cdLogin)
+INNER JOIN tblCashier ON  tblsale.cd_Cashier = tblcashier.cdCashier);
+
+
+
+SELECT * FROM dbpdv.tblsale;
+
 
 describe tblpayment;
 

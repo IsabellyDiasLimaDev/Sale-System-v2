@@ -42,7 +42,6 @@ public class OptionsOpenCashierController {
 	
 	public void returnSale(){
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-		System.out.println(date);
 		try {
 			boolean isActive = new AppCashierJDBC().verifyDate(date, UserSession.getInstace().getCdLogin());
 			if(isActive) {

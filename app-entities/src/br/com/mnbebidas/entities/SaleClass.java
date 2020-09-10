@@ -6,24 +6,27 @@ public class SaleClass {
 
 	private int cdLogin;
 	private int cdCashier;
+	private int cdTypePay;
 	private int noQuantityTotal;
 	private double noTotalValue;
 
-	private SaleClass( int cdLogin, int cdCashier, int noQuantityTotal, double noTotalValue) {
+	private SaleClass( int cdLogin, int cdCashier,int cdTypePay ,int noQuantityTotal, double noTotalValue) {
 		this.cdLogin = cdLogin;
 		this.cdCashier = cdCashier;
+		this.cdTypePay = cdTypePay;
 		this.noQuantityTotal = noQuantityTotal;
 		this.noTotalValue = noTotalValue;
 	}
 
-	public static SaleClass getInstance( int cdLogin, int cdCashier, int noQuantityTotal,
+	public static SaleClass getInstance( int cdLogin, int cdCashier,int cdTypePay ,int noQuantityTotal,
 			double noTotalValue) {
 		if(instance == null) {
-			instance = new SaleClass(cdLogin, cdCashier, noQuantityTotal, noTotalValue);
+			instance = new SaleClass(cdLogin, cdCashier, cdTypePay,noQuantityTotal, noTotalValue);
 		}
 		else {
 			instance.setCdCashier(cdCashier);
 			instance.setCdLogin(cdLogin);
+			
 			instance.setNoQuantityTotal(noQuantityTotal);
 			instance.setNoTotalValue(noTotalValue);
 		}
@@ -53,6 +56,14 @@ public class SaleClass {
 
 	public void setCdCashier(int cdCashier) {
 		this.cdCashier = cdCashier;
+	}
+	
+	public int getCdTypePay() {
+		return cdTypePay;
+	}
+
+	public void setCdTypePay(int cdTypePay) {
+		this.cdTypePay = cdTypePay;
 	}
 
 	public int getNoQuantityTotal() {

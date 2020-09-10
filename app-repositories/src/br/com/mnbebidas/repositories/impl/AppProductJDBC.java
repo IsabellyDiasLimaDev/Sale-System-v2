@@ -151,6 +151,7 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 
 		return product;
 	}
+
 	
 	public void updateQuantityProduct(ArrayList<ListCashierProduct> products, int qtd) throws SQLException {
 		Connection con = null;

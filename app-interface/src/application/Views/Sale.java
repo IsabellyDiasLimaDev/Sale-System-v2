@@ -1,26 +1,25 @@
 package application.Views;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-public class Sale extends Application {
-	@Override
-	public void start(Stage primaryStage) {
+public class Sale {
+	public void start(ImageView imgProduct) {
+		Stage stage = (Stage) imgProduct.getScene().getWindow();
+		stage.close();
 		try {
-			VBox root = (VBox) FXMLLoader.load(getClass().getResource("ManageSale.fxml"));
-			Scene scene = new Scene(root, 400, 400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			VBox root = (VBox) FXMLLoader.load(getClass().getResource("ManageSale1.fxml"));
+			Scene scene = new Scene(root, 688, 502);
+			Stage newWindow = new Stage();
+			newWindow.setTitle("M&N Bebidas");
+			newWindow.setResizable(false);
+			newWindow.setScene(scene);
+			newWindow.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static void main(String[] args) {
-		launch(args);
 	}
 }

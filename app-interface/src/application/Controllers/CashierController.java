@@ -1,8 +1,13 @@
 package application.Controllers;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import application.Views.MenuCashier;
@@ -14,6 +19,7 @@ import br.com.mnbebidas.entities.ListCashierProduct;
 import br.com.mnbebidas.entities.SaleClass;
 import br.com.mnbebidas.entities.SaleSession;
 import br.com.mnbebidas.entities.UserSession;
+import br.com.mnbebidas.repositories.impl.AppPaymentJDBC;
 import br.com.mnbebidas.repositories.impl.AppProductJDBC;
 import br.com.mnbebidas.repositories.impl.AppSaleJDBC;
 import br.com.mnbebidas.repositories.impl.SaleProductJDBC;
@@ -26,6 +32,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -49,6 +56,8 @@ public class CashierController implements Initializable {
 	// private ListView<ListCashierProduct> listProduct;
 	private TableView<ListCashierProduct> tableProduct;
 	@FXML
+	private ComboBox<String> typePayCombo;
+	@FXML
 	private Button conferProduct;
 	@FXML
 	private Button updateProduct;
@@ -62,6 +71,8 @@ public class CashierController implements Initializable {
 	private Button updateButton;
 	@FXML
 	private Button removeButton;
+	@FXML
+	private Button generateCupomButton;
 	@FXML
 	private ImageView imgBack;
 	@FXML
@@ -81,6 +92,9 @@ public class CashierController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		typePayCombo.getItems().addAll("Cartão de Crédito", "Cartão de Débito", "Dinheiro", "Cartão de Débito/Crédito",
+				"Cartão de Débito/Dinheiro", "Cartão de Crédito/Dinheiro");
 
 		this.tableProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldProduct, newProduct) -> {
 			if (newProduct != null) {
@@ -206,18 +220,22 @@ public class CashierController implements Initializable {
 
 	public void newSale() {
 		txtfCode.setDisable(false);
+		typePayCombo.setDisable(false);
 		txtfQuantity.setDisable(false);
 		tableProduct.setDisable(false);
 		newSale.setDisable(true);
 		closeSale.setDisable(false);
+		generateCupomButton.setDisable(false);
 		clearAllItems();
 	}
 
 	public void setsale() throws IllegalStateException, SQLException {
 		if (listProducts != null) {
+			int id = new AppPaymentJDBC().getId(typePayCombo.getValue());
+			System.out.println("Id do tipo da venda: " + id);
 			// Instancia o objeto venda
 			SaleClass getSale = SaleClass.getInstance(UserSession.getInstace().getCdLogin(),
-					CashierSession.getInstace().getCdCashier(), quantityTotal, totalValueSale);
+					CashierSession.getInstace().getCdCashier(), id, quantityTotal, totalValueSale);
 			// Adiciona no banco de dados
 			AppSaleJDBC sale = new AppSaleJDBC();
 			sale.inserir(getSale);
@@ -226,8 +244,9 @@ public class CashierController implements Initializable {
 			// Chama o metodo para adicionar os produtos ma tableproducts
 			setProductsOnSale();
 			// Abre a tela de forma de pagamento
-			new TypePayment().start();
+			// new TypePayment().start();
 			desabilityTxtfAndTable();
+
 		}
 	}
 
@@ -309,13 +328,15 @@ public class CashierController implements Initializable {
 	}
 
 	public void clearAllItems() throws IndexOutOfBoundsException {
+		File cupom = new File("cupom.txt");
+		cupom.delete();
 		txtfCode.setText("");
+		typePayCombo.setValue("");
 		txtfDescription.setText("");
 		txtfQuantity.setText("");
 		txtfTotalValueProduct.setText("");
 		txtfTotalValueSale.setText("");
 		txtfValue.setText("");
-		listProducts.clear();
 		tableProduct.getItems().clear();
 		positionOfProduct = 0;
 		totalValueSale = 0f;
@@ -323,14 +344,52 @@ public class CashierController implements Initializable {
 		quantity = 1;
 		quantityTotal = 0;
 		isNew = false;
+		try {
+			listProducts.clear();
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public void desabilityTxtfAndTable() {
 		txtfCode.setDisable(true);
+		typePayCombo.setDisable(true);
 		txtfQuantity.setDisable(true);
 		tableProduct.setDisable(true);
 		newSale.setDisable(false);
 		closeSale.setDisable(true);
+		generateCupomButton.setDisable(true);
 	}
 
+	public void generateCupom() {
+		try {
+			File cupon = new File("cupom.txt");
+			if (cupon.createNewFile()) {
+				System.out.println("Cupom Gerado!");
+				FileWriter myWriter = new FileWriter("cupom.txt");
+				myWriter.write("M&N Bebidas\n");
+				String date = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
+				myWriter.write("-------------------------\n");
+				myWriter.write(date + "\n");
+				myWriter.write("-------------------------\n");
+				myWriter.write("Item  Código/Descrição                                      QTDE  Venda  Total\n");
+				for (int i = 0; i < listProducts.size(); i++) {
+					myWriter.write(listProducts.get(i).getPosition() + " " + listProducts.get(i).getNoBarCode() + " "
+							+ listProducts.get(i).getNmDescription() + " " + listProducts.get(i).getNoQuantityProduct()
+							+ " " + listProducts.get(i).getNoValue() + " " + listProducts.get(i).getTotalValue()
+							+ "\n");
+				}
+				myWriter.write("Total R$                                                                 "
+						+ totalValueSale + "\n");
+				myWriter.write("Caixa: " + CashierSession.getInstace().getCdCashier() + "\n");
+				myWriter.close();
+				System.out.println(cupon.getAbsolutePath());
+				System.out.println("Successfully wrote to the file.");
+			}
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+
+	}
 }
