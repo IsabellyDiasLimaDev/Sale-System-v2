@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0"
+	prefWidth="519.0" xmlns="http://javafx.com/javafx/11.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.Controllers.MenuCashierController">
+	<children>
+		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0"
+			prefWidth="600.0" style="-fx-background-color: #FFD500;">
+			<children>
+				<Label layoutX="14.0" layoutY="20.0" text="Caixa"
+					textFill="#422800">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+			</children>
+		</Pane>
+		<HBox prefHeight="237.0" prefWidth="519.0">
+			<children>
+				<VBox alignment="TOP_CENTER" prefHeight="200.0"
+					prefWidth="372.0">
+					<children>
+						<ImageView fx:id="imgUnlock" fitHeight="70.0"
+							fitWidth="70.0" onMouseClicked="#openCashier" pickOnBounds="true"
+							preserveRatio="true">
+							<image>
+								<Image url="@../../unlock.png" />
+							</image>
+							<VBox.margin>
+								<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+							</VBox.margin>
+						</ImageView>
+						<Label text="Abrir">
+							<font>
+								<Font name="Segoe UI" size="15.0" />
+							</font>
+						</Label>
+					</children>
+				</VBox>
+				<VBox alignment="TOP_CENTER" prefHeight="200.0"
+					prefWidth="372.0">
+					<children>
+						<ImageView fitHeight="70.0" onMouseClicked="#closeCashier" fitWidth="70.0"
+							pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../lock.png" />
+							</image>
+							<VBox.margin>
+								<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+							</VBox.margin>
+						</ImageView>
+						<Label text="Fechar">
+							<font>
+								<Font name="Segoe UI" size="15.0" />
+							</font>
+						</Label>
+					</children>
+				</VBox>
+				<VBox alignment="TOP_CENTER" prefHeight="200.0"
+					prefWidth="372.0">
+					<children>
+						<ImageView fx:id="imgList" fitHeight="70.0"
+							fitWidth="70.0" onMouseClicked="#openList" pickOnBounds="true"
+							preserveRatio="true">
+							<image>
+								<Image url="@../../List.png" />
+							</image>
+							<VBox.margin>
+								<Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
+							</VBox.margin>
+						</ImageView>
+						<Label onMouseClicked="#openList" text="Listar ">
+							<font>
+								<Font name="Segoe UI" size="15.0" />
+							</font>
+						</Label>
+					</children>
+				</VBox>
+			</children>
+		</HBox>
+		<HBox alignment="CENTER_RIGHT" prefHeight="69.0"
+			prefWidth="600.0">
+			<children>
+				<HBox alignment="CENTER_LEFT" prefHeight="89.0"
+					prefWidth="367.0">
+					<children>
+						<Label fx:id="lblUsername" text="Usuário:">
+							<font>
+								<Font name="Segoe UI" size="25.0" />
+							</font>
+							<HBox.margin>
+								<Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+							</HBox.margin>
+						</Label>
+						<Label fx:id="lblUsername" text="Label">
+							<font>
+								<Font name="Segoe UI" size="25.0" />
+							</font>
+							<HBox.margin>
+								<Insets bottom="10.0" left="4.0" right="10.0" top="10.0" />
+							</HBox.margin>
+						</Label>
+					</children>
+				</HBox>
+				<HBox alignment="CENTER_RIGHT" prefHeight="89.0"
+					prefWidth="367.0">
+					<children>
+						<Label onMouseClicked="#backToMenu"
+							text="Voltar para o menu">
+							<font>
+								<Font name="Segoe UI" size="18.0" />
+							</font>
+						</Label>
+						<ImageView fx:id="imgBack" fitHeight="36.0"
+							fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="@../../back.png" />
+							</image>
+							<HBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</HBox.margin>
+						</ImageView>
+					</children>
+				</HBox>
+			</children>
+			<VBox.margin>
+				<Insets top="100.0" />
+			</VBox.margin>
+		</HBox>
+	</children>
+</VBox>

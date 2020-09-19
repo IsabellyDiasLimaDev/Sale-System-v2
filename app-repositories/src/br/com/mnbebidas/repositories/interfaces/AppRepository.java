@@ -8,7 +8,7 @@ public interface AppRepository<T> {
 
 	void inserir(T entidade) throws SQLException;
 
-	void atualizar(T entidade);
+	void atualizar(T entidade) throws SQLException;
 
-	void excluir(T entidade);
+	void excluir(int id) throws SQLException;
 }

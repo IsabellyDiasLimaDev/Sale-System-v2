@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.SaleController">
+	<children>
+		<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #FFD500;">
+			<children>
+				<Label layoutX="14.0" layoutY="20.0" text="Vendas" textFill="#422800">
+					<font>
+						<Font name="Segoe UI" size="20.0" />
+					</font>
+				</Label>
+			</children>
+		</Pane>
+		<TableView fx:id="tableSale" prefHeight="200.0" prefWidth="667.0">
+			<columns>
+				<TableColumn prefWidth="142.0" text="Código da venda">
+					<cellValueFactory>
+						<PropertyValueFactory property="cdSale" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn prefWidth="107.0" text="Quantidade total">
+					<cellValueFactory>
+						<PropertyValueFactory property="noQuantityTotal" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn prefWidth="73.0" text="Valor total">
+					<cellValueFactory>
+						<PropertyValueFactory property="noTotalValue" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn prefWidth="135.0" text="Tipo de pagamento">
+					<cellValueFactory>
+						<PropertyValueFactory property="nmTypePay" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn prefWidth="144.0" text="Usuário">
+					<cellValueFactory>
+						<PropertyValueFactory property="nmUser" />
+					</cellValueFactory>
+					</TableColumn>
+					<TableColumn prefWidth="44.0" text="Caixa">
+						<cellValueFactory>
+							<PropertyValueFactory property="cdCashier" />
+						</cellValueFactory>
+					</TableColumn>
+			</columns>
+			<VBox.margin>
+				<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+			</VBox.margin>
+		</TableView>
+      <TableView fx:id="tableProduct" prefHeight="200.0" prefWidth="667.0">
+         <columns>
+            <TableColumn prefWidth="155.0" text="Código de barras">
+               <cellValueFactory>
+                  <PropertyValueFactory property="noBarCode" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="186.0" text="Descrição">
+               <cellValueFactory>
+                  <PropertyValueFactory property="nmDescription" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="111.0" text="Valor total">
+               <cellValueFactory>
+                  <PropertyValueFactory property="noValue" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="115.0" text="Quantidade total">
+               <cellValueFactory>
+                  <PropertyValueFactory property="noQuantity" />
+               </cellValueFactory>
+            </TableColumn>
+         </columns>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </TableView>
+	</children>
+</VBox>
