@@ -1,5 +1,6 @@
 package application.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class OpenAndCloseCashiers implements Initializable{
 	List<CashierSession> list = new ArrayList<CashierSession>();
 	List<CashierSession> list2 = new ArrayList<CashierSession>();
 
-	public void loadLists() {
+	public void loadLists() throws IOException {
 		AppCashierJDBC cashierRepository = new AppCashierJDBC();
 		try {
 			list = cashierRepository.listCashiersOfStatus(isClosing);
@@ -66,7 +67,12 @@ public class OpenAndCloseCashiers implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		loadLists();
+		try {
+			loadLists();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 this.listOpenCashiers.getSelectionModel().selectedItemProperty().addListener((obs,oldCashier,newCashier)->{
 		if(newCashier != null) {
 			id = newCashier.getCdCashier();

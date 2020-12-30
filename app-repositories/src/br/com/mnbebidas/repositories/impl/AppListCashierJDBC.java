@@ -1,21 +1,22 @@
 package br.com.mnbebidas.repositories.impl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import br.com.mnbebidas.connection.ConnectionJDBC;
 import br.com.mnbebidas.entities.CashierSession;
 import br.com.mnbebidas.entities.CashierUserClass;
 
 public class AppListCashierJDBC {
 
-	public void userCashier(CashierUserClass entidade) throws SQLException {
+	public void userCashier(CashierUserClass entidade) throws SQLException, IOException {
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			PreparedStatement comando = con.prepareStatement(
 					"INSERT INTO tblcashierlogin (cdLogin,cdCashier) VALUES (?,?);");
 

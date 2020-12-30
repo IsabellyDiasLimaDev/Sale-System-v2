@@ -1,5 +1,6 @@
 package br.com.mnbebidas.repositories.impl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,20 +10,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.mnbebidas.connection.ConnectionJDBC;
 import br.com.mnbebidas.entities.UserClass;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
 
 public class AppUserJDBC implements AppRepository<UserClass> {
 
 	@Override
-	public List<UserClass> selecionar() throws SQLException {
+	public List<UserClass> selecionar() throws SQLException, IOException {
 
 		Connection con = null;
 		List<UserClass> users = new ArrayList<UserClass>();
 		String sql = "select * from tbllogin";
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			Statement comando = con.createStatement();
 			ResultSet rs = comando.executeQuery(sql);
 			while (rs.next()) {
@@ -45,11 +46,10 @@ public class AppUserJDBC implements AppRepository<UserClass> {
 	}
 
 	@Override
-	public void inserir(UserClass entidade) throws SQLException {
+	public void inserir(UserClass entidade) throws SQLException, IOException {
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			PreparedStatement comando = con.prepareStatement(
 					"INSERT INTO tblLogin (nmEmail,nmUser,nmPassword,dsType,dsStatus) VALUES (?,?,?,?,?);");
 			comando.setString(1, entidade.getNmEmail());
@@ -66,12 +66,11 @@ public class AppUserJDBC implements AppRepository<UserClass> {
 	}
 
 	@Override
-	public void atualizar(UserClass entidade) throws SQLException {
+	public void atualizar(UserClass entidade) throws SQLException, IOException {
 
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			PreparedStatement comando = con.prepareStatement(
 					"UPDATE tblLogin SET nmEmail = ?, nmUser = ?, nmPassword= ?, dsType= ?,dsStatus= ? WHERE cdLogin = ?;");
 			comando.setString(1, entidade.getNmEmail());
@@ -89,11 +88,10 @@ public class AppUserJDBC implements AppRepository<UserClass> {
 	}
 
 	@Override
-	public void excluir(int id) throws SQLException {
+	public void excluir(int id) throws SQLException, IOException {
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			PreparedStatement comando = con.prepareStatement("DELETE FROM tblLogin WHERE cdLogin = ?");
 			comando.setInt(1, id);
 			comando.execute();

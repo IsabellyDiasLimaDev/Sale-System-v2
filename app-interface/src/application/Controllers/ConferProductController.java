@@ -1,5 +1,6 @@
 package application.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -52,7 +53,12 @@ public class ConferProductController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.tableProduct.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-		loadListProduct();
+		try {
+			loadListProduct();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		enableEditing(false);
 
 		this.tableProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldProduct, newProduct) -> {
@@ -91,7 +97,7 @@ public class ConferProductController implements Initializable {
 		return localDate;
 	}
 
-	public void loadListProduct() {
+	public void loadListProduct() throws IOException {
 		try {
 			AppRepository<ProductClass> productRepository = new AppProductJDBC();
 			List<ProductClass> products = productRepository.selecionar();
@@ -102,7 +108,7 @@ public class ConferProductController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro ao obter a lista de usuários: " + e.getMessage());
+			mensagem.setContentText("Houve um erro ao obter a lista de usuï¿½rios: " + e.getMessage());
 			mensagem.showAndWait();
 		}
 	}

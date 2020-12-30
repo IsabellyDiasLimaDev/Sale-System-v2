@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.mnbebidas.connection.ConnectionJDBC;
 import br.com.mnbebidas.entities.UserClass;
 import br.com.mnbebidas.entities.UserSession;
 
@@ -24,8 +25,9 @@ public class AppLoginJDBC {
 		String sql = "SELECT * FROM tblLogin WHERE nmUser = ? and nmPassword = ?";
 
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			//con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
+			//		"root", "root");
+			con = ConnectionJDBC.createConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, user);
 			ps.setString(2, password);
@@ -49,8 +51,7 @@ public class AppLoginJDBC {
 		String sql = "SELECT * FROM tblLogin WHERE nmUser = ? and nmPassword = ? and dsType = ?";
 
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, user);
 			ps.setString(2, password);
@@ -72,8 +73,7 @@ public class AppLoginJDBC {
 
 		String sql = "SELECT cdLogin, nmUser, dsType FROM tblLogin WHERE nmUser = ? and nmPassword = ?";
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, user);
 			ps.setString(2, password);
@@ -82,7 +82,7 @@ public class AppLoginJDBC {
 				int cd = resultSet.getInt("cdLogin");
 				String userName = resultSet.getString("nmUser");
 				String privilegies = resultSet.getString("dsType");
-				// Obtém o objeto pelo `UserSession.getInstace`
+				// Obtï¿½m o objeto pelo `UserSession.getInstace`
 				UserSession userSession = UserSession.getInstace(cd, userName, privilegies);
 				System.out.print(userSession);
 			}
@@ -93,7 +93,7 @@ public class AppLoginJDBC {
 		}
 	}
 
-	public boolean isAtivo(String nmUser) throws SQLException {
+	public boolean isAtivo(String nmUser) throws SQLException, IOException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -102,8 +102,7 @@ public class AppLoginJDBC {
 
 		String sql = "SELECT * FROM tblLogin WHERE dsStatus = ? and nmUser = ?";
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, "Ativo");
 			ps.setString(2, nmUser);

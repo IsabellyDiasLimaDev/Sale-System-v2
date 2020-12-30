@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 
 import application.Views.MenuCashier;
 import application.Views.Product;
-import application.Views.TypePayment;
 import br.com.mnbebidas.entities.CashierClass;
 import br.com.mnbebidas.entities.CashierSession;
 import br.com.mnbebidas.entities.ListCashierProduct;
@@ -93,8 +92,8 @@ public class CashierController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		typePayCombo.getItems().addAll("Cartão de Crédito", "Cartão de Débito", "Dinheiro", "Cartão de Débito/Crédito",
-				"Cartão de Débito/Dinheiro", "Cartão de Crédito/Dinheiro");
+		typePayCombo.getItems().addAll("Cartï¿½o de Crï¿½dito", "Cartï¿½o de Dï¿½bito", "Dinheiro", "Cartï¿½o de Dï¿½bito/Crï¿½dito",
+				"Cartï¿½o de Dï¿½bito/Dinheiro", "Cartï¿½o de Crï¿½dito/Dinheiro");
 
 		this.tableProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldProduct, newProduct) -> {
 			if (newProduct != null) {
@@ -163,7 +162,7 @@ public class CashierController implements Initializable {
 							tableProduct.getItems().setAll(observableListProducts);
 						}
 					}
-				} catch (SQLException e) {
+				} catch (SQLException | IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println(e.getMessage());
 				}
@@ -208,7 +207,7 @@ public class CashierController implements Initializable {
 						isNew = false;
 						System.out.println(observableListProducts);
 					}
-				} catch (SQLException e) {
+				} catch (SQLException | IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println(e.getMessage());
 				}
@@ -238,19 +237,24 @@ public class CashierController implements Initializable {
 					CashierSession.getInstace().getCdCashier(), id, quantityTotal, totalValueSale);
 			// Adiciona no banco de dados
 			AppSaleJDBC sale = new AppSaleJDBC();
-			sale.inserir(getSale);
-			// Chama o metodo para retornar o ultimo id de venda
-			sale.getId(UserSession.getInstace().getCdLogin());
-			// Chama o metodo para adicionar os produtos ma tableproducts
-			setProductsOnSale();
-			// Abre a tela de forma de pagamento
-			// new TypePayment().start();
-			desabilityTxtfAndTable();
+			try {
+				sale.inserir(getSale);
+				// Chama o metodo para retornar o ultimo id de venda
+				sale.getId(UserSession.getInstace().getCdLogin());
+				// Chama o metodo para adicionar os produtos ma tableproducts
+				setProductsOnSale();
+				// Abre a tela de forma de pagamento
+				// new TypePayment().start();
+				desabilityTxtfAndTable();
+			} catch (SQLException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		}
 	}
 
-	public void setProductsOnSale() throws IllegalStateException, SQLException {
+	public void setProductsOnSale() throws IllegalStateException, SQLException, IOException {
 		SaleProductJDBC sp = new SaleProductJDBC();
 		AppProductJDBC p = new AppProductJDBC();
 		sp.insert(listProducts, listProducts.size(), SaleSession.getInstance().getCdSale());
@@ -372,7 +376,7 @@ public class CashierController implements Initializable {
 				myWriter.write("-------------------------\n");
 				myWriter.write(date + "\n");
 				myWriter.write("-------------------------\n");
-				myWriter.write("Item  Código/Descrição                                      QTDE  Venda  Total\n");
+				myWriter.write("Item  Cï¿½digo/Descriï¿½ï¿½o                                      QTDE  Venda  Total\n");
 				for (int i = 0; i < listProducts.size(); i++) {
 					myWriter.write(listProducts.get(i).getPosition() + " " + listProducts.get(i).getNoBarCode() + " "
 							+ listProducts.get(i).getNmDescription() + " " + listProducts.get(i).getNoQuantityProduct()

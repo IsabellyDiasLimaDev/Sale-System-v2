@@ -1,5 +1,6 @@
 package br.com.mnbebidas.repositories.impl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import br.com.mnbebidas.connection.ConnectionJDBC;
 import br.com.mnbebidas.entities.CashierClass;
 import br.com.mnbebidas.entities.ListCashierProduct;
 import br.com.mnbebidas.entities.ProductClass;
@@ -19,13 +21,12 @@ import br.com.mnbebidas.repositories.interfaces.AppRepository;
 public class AppProductJDBC implements AppRepository<ProductClass> {
 
 	@Override
-	public List<ProductClass> selecionar() throws SQLException {
+	public List<ProductClass> selecionar() throws SQLException, IOException {
 		Connection con = null;
 		List<ProductClass> products = new ArrayList<ProductClass>();
 		String sql = "select * from tblproduct";
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			Statement comando = con.createStatement();
 			ResultSet rs = comando.executeQuery(sql);
 			while (rs.next()) {
@@ -54,11 +55,10 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 	}
 
 	@Override
-	public void inserir(ProductClass entidade) throws SQLException {
+	public void inserir(ProductClass entidade) throws SQLException, IOException {
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			PreparedStatement comando = con.prepareStatement(
 					"INSERT INTO tblProduct (noBarCode,nmDescription,dtExpirationDate,noAmountPaid,noSaleValue,noProfit,noQuantity) VALUES (?,?,?,?,?,?,?);");
 			// SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
@@ -83,11 +83,10 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 	}
 
 	@Override
-	public void atualizar(ProductClass entidade) throws SQLException {
+	public void atualizar(ProductClass entidade) throws SQLException, IOException {
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			PreparedStatement comando = con.prepareStatement(
 					"UPDATE tblproduct SET noBarCode = ?, nmDescription = ?, dtExpirationDate = ?, noAmountPaid = ?, noSaleValue = ?,noProfit = ?, noQuantity = ? WHERE cdProduct = ?;");
 			comando.setString(1, entidade.getNoBarCode());
@@ -108,12 +107,11 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 	}
 
 	@Override
-	public void excluir(int id) throws SQLException {
+	public void excluir(int id) throws SQLException, IOException {
 		Connection con = null;
 		boolean isNext = false;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			PreparedStatement comando = con.prepareStatement("DELETE FROM tblProduct WHERE cdProduct = ?");
 			comando.setInt(1, id);
 			comando.execute();
@@ -125,13 +123,12 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 		}
 	}
 
-	public ArrayList<CashierClass> selectProductToCashier(String noBarCode) throws SQLException {
+	public ArrayList<CashierClass> selectProductToCashier(String noBarCode) throws SQLException, IOException {
 		Connection con = null;
 		boolean isNext = false;
 		ArrayList<CashierClass> product = new ArrayList<CashierClass>();
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			String query = "SELECT cdProduct,nmDescription, noSaleValue, noQuantity FROM tblProduct WHERE noBarCode = ?;";
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, noBarCode);
@@ -153,11 +150,10 @@ public class AppProductJDBC implements AppRepository<ProductClass> {
 	}
 
 	
-	public void updateQuantityProduct(ArrayList<ListCashierProduct> products, int qtd) throws SQLException {
+	public void updateQuantityProduct(ArrayList<ListCashierProduct> products, int qtd) throws SQLException, IOException {
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			for(int i = 0; i< qtd; i++) {
 				PreparedStatement comando = con.prepareStatement(
 						"UPDATE tblproduct SET noQuantity = ? WHERE cdProduct = ?;");

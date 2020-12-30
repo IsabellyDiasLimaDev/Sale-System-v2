@@ -1,5 +1,6 @@
 package application.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -54,8 +55,8 @@ public class TypePaymentController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		disableEditing(true);
-		typePayCombo.getItems().addAll("Cartão de Crédito", "Cartão de Débito", "Dinheiro", "Cartão de Débito/Crédito",
-				"Cartão de Débito/Dinheiro", "Cartão de Crédito/Dinheiro");
+		typePayCombo.getItems().addAll("Cartï¿½o de Crï¿½dito", "Cartï¿½o de Dï¿½bito", "Dinheiro", "Cartï¿½o de Dï¿½bito/Crï¿½dito",
+				"Cartï¿½o de Dï¿½bito/Dinheiro", "Cartï¿½o de Crï¿½dito/Dinheiro");
 		typePayCombo.valueProperty().addListener(new ChangeListener<String>() {
 
 			@Override
@@ -64,12 +65,12 @@ public class TypePaymentController implements Initializable {
 				payment = newValue;
 				setPay.setDisable(false);
 				cancelPay.setDisable(false);
-				if (newValue.equals("Cartão de Crédito")) {
+				if (newValue.equals("Cartï¿½o de Crï¿½dito")) {
 					txtfCredit.setDisable(false);
 					lblCredit.setDisable(false);
 					typePayCombo.setDisable(true);
 					TypePay.getInstance(1, newValue);
-				} else if (newValue.equals("Cartão de Débito")) {
+				} else if (newValue.equals("Cartï¿½o de Dï¿½bito")) {
 					txtfDebit.setDisable(false);
 					lblDebit.setDisable(false);
 					typePayCombo.setDisable(true);
@@ -79,21 +80,21 @@ public class TypePaymentController implements Initializable {
 					lblCash.setDisable(false);
 					typePayCombo.setDisable(true);
 					TypePay.getInstance(3, newValue);
-				} else if (newValue.equals("Cartão de Débito/Crédito")) {
+				} else if (newValue.equals("Cartï¿½o de Dï¿½bito/Crï¿½dito")) {
 					txtfDebit.setDisable(false);
 					lblDebit.setDisable(false);
 					txtfCredit.setDisable(false);
 					lblCredit.setDisable(false);
 					typePayCombo.setDisable(true);
 					TypePay.getInstance(4, newValue);
-				} else if (newValue.equals("Cartão de Débito/Dinheiro")) {
+				} else if (newValue.equals("Cartï¿½o de Dï¿½bito/Dinheiro")) {
 					txtfDebit.setDisable(false);
 					lblDebit.setDisable(false);
 					txtfCash.setDisable(false);
 					lblCash  .setDisable(false);
 					typePayCombo.setDisable(true);
 					TypePay.getInstance(5, newValue);
-				} else if (newValue.equals("Cartão de Crédito/Dinheiro")) {
+				} else if (newValue.equals("Cartï¿½o de Crï¿½dito/Dinheiro")) {
 					txtfCredit.setDisable(false);
 					lblCredit.setDisable(false);
 					txtfCash.setDisable(false);
@@ -125,10 +126,10 @@ public void cancelpayment() {
 	disableEditing(true);
 }
 
-	public void setPayment() throws SQLException {
+	public void setPayment() throws SQLException, IllegalStateException, IOException {
 		AppSaleJDBC newSaleJDBC = new AppSaleJDBC();
 		newSaleJDBC.getId(UserSession.getInstace().getCdLogin());
-		if (payment.equals("Cartão de Débito")) {
+		if (payment.equals("Cartï¿½o de Dï¿½bito")) {
 			int cdTypePay = TypePay.getInstance().getCdTypePay();
 			int cdSale = SaleSession.getInstance().getCdSale();
 			double parcialValue = Double.parseDouble(txtfDebit.getText());
@@ -136,7 +137,7 @@ public void cancelpayment() {
 			System.out.println(SaleClass.getInstance());
 			new AppPaymentJDBC().inserir(pay);
 		}
-		if (payment.equals("Cartão de Crédito")) {
+		if (payment.equals("Cartï¿½o de Crï¿½dito")) {
 			int cdTypePay = TypePay.getInstance().getCdTypePay();
 			int cdSale = SaleSession.getInstance().getCdSale();
 			double parcialValue = Double.parseDouble(txtfCredit.getText());
@@ -152,7 +153,7 @@ public void cancelpayment() {
 			System.out.println(SaleClass.getInstance());
 			new AppPaymentJDBC().inserir(pay);
 		}
-		if (payment.equals("Cartão de Débito/Crédito")) {
+		if (payment.equals("Cartï¿½o de Dï¿½bito/Crï¿½dito")) {
 			int cdTypePay = TypePay.getInstance().getCdTypePay();
 			int cdSale = SaleSession.getInstance().getCdSale();
 			double parcialValue = Double.parseDouble(txtfDebit.getText());
@@ -164,7 +165,7 @@ public void cancelpayment() {
 			System.out.println(SaleClass.getInstance());
 			new AppPaymentJDBC().inserir(pay2);
 		}
-		if (payment.equals("Cartão de Débito/Dinheiro")) {
+		if (payment.equals("Cartï¿½o de Dï¿½bito/Dinheiro")) {
 			int cdTypePay = TypePay.getInstance().getCdTypePay();
 			int cdSale = SaleSession.getInstance().getCdSale();
 			double parcialValue = Double.parseDouble(txtfDebit.getText());
@@ -176,7 +177,7 @@ public void cancelpayment() {
 			System.out.println(SaleClass.getInstance());
 			new AppPaymentJDBC().inserir(pay2);
 		}
-		if (payment.equals("Cartão de Crédito/Dinheiro")) {
+		if (payment.equals("Cartï¿½o de Crï¿½dito/Dinheiro")) {
 			int cdTypePay = TypePay.getInstance().getCdTypePay();
 			int cdSale = SaleSession.getInstance().getCdSale();
 			double parcialValue = Double.parseDouble(txtfCredit.getText());
