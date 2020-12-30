@@ -84,7 +84,7 @@
     <img alt="Passo 9" src="https://github.com/BlackWidow29/Sale-System-v2/blob/master/.github/Captura%20de%20tela%20de%202020-12-30%2013.42.12.png" width="1000px">
 </h1>
 
-* Depois vá na opção arguments > vm arguments e cole este comando > --module-path path/to/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml (você deve alterar o caminho da sdk do javafx)
+* Depois vá na opção java application > arguments > vm arguments e cole este comando > --module-path path/to/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml (você deve alterar o caminho da sdk do javafx)
 
 <h1 align="center">
     <img alt="Passo 9" src="https://github.com/BlackWidow29/Sale-System-v2/blob/master/.github/Captura%20de%20tela%20de%202020-12-30%2013.48.24.png" width="1000px">
