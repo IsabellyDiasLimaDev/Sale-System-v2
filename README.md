@@ -67,4 +67,22 @@
 
 * Faça o mesmo com o mysql connector.
 
+# Rodando o banco de dados
 
+* O script do banco de dados se encontra em database/database.sql
+* Após rodar esse script rode essa query -> INSERT INTO tbllogin (nmEmail,nmUser,nmPassword,dsType,dsStatus) VALUES ('administrador@gmail.com','administrador','1234567','Administrador','Ativo');
+* A conexão configurada no sistema esta localizada em > app-repositories/src/br/com/mnbebidas/connection/ConnectionJDBC.java, caso precise mudar o usuario e senha fique a vontade.
+
+
+# Rodando a aplicação
+
+* O programa principal está localizado em > app-interface/src/application/Views/Login.java
+* Para rodar a aplicação abra o arquivo clique com o botão direito e selecione a opção run as > run configurations
+
+
+<h1 align="center">
+    <img alt="Passo 8" src="https://github.com/BlackWidow29/Sale-System-v2/blob/512dcfbc129895ea2337298a963d0e59532710e7/.github/Captura%20de%20tela%20de%202020-12-30%2010.58.40.png" width="1000px">
+</h1>
+
+* Depois vá na opção arguments > vm arguments e cole este comando > --module-path path/to/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml (você deve alterar o caminho da sdk do javafx)
+* Após essas configurações o programa deve rodar normalmente
