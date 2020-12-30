@@ -49,15 +49,15 @@ public class LoginController implements Initializable {
 			if (!verifyUser) {
 				Alert mensagem = new Alert(AlertType.ERROR);
 				mensagem.setTitle("Erro!");
-				mensagem.setHeaderText("Usuário ou senha incorretos");
-				mensagem.setContentText("Verifique seu usuário e senha e tente novamente!");
+				mensagem.setHeaderText("Usuï¿½rio ou senha incorretos");
+				mensagem.setContentText("Verifique seu usuï¿½rio e senha e tente novamente!");
 				mensagem.showAndWait();
 			} 
 			else if(!verifyActive) {
 				Alert mensagem = new Alert(AlertType.ERROR);
 				mensagem.setTitle("Erro!");
-				mensagem.setHeaderText("Usuário Inativo");
-				mensagem.setContentText("Este usuário está inativo!");
+				mensagem.setHeaderText("Usuï¿½rio Inativo");
+				mensagem.setContentText("Este usuï¿½rio estï¿½ inativo!");
 				mensagem.showAndWait();
 			}
 			else {
@@ -75,8 +75,9 @@ public class LoginController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro na verificação do usuário: " + e.getMessage());
+			mensagem.setContentText("Houve um erro na verificaï¿½ï¿½o do usuï¿½rio: " + e.getMessage());
 			mensagem.showAndWait();
+			System.out.println(e.getMessage());
 		}
 	}
 

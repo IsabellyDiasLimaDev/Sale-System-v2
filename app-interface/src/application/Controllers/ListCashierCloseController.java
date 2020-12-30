@@ -1,5 +1,6 @@
 package application.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class ListCashierCloseController implements Initializable {
 
 	List<CashierSession> list = new ArrayList<CashierSession>();
 
-	public void loadListCashiers() {
+	public void loadListCashiers() throws IOException {
 		AppRepository<CashierSession> cashierRepository = new AppCashierJDBC();
 		try {
 			list = cashierRepository.selecionar();
@@ -57,7 +58,12 @@ public class ListCashierCloseController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.listCashiers.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-		loadListCashiers();
+		try {
+			loadListCashiers();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		this.listCashiers.getSelectionModel().selectedItemProperty().addListener((obs, oldCashier, newCashier) -> {
 			try {
 				if (newCashier != null) {
@@ -75,7 +81,7 @@ public class ListCashierCloseController implements Initializable {
 					Stage stage = (Stage) lblCashier.getScene().getWindow();
 					stage.close();
 				}
-			} catch (SQLException e) {
+			} catch (SQLException | IOException e) {
 				Alert mensagem = new Alert(AlertType.ERROR);
 				mensagem.setTitle("Erro!");
 				mensagem.setHeaderText("Erro ao fechar o caixa");

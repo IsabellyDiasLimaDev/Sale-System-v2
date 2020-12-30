@@ -1,5 +1,6 @@
 package br.com.mnbebidas.repositories.impl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.mnbebidas.connection.ConnectionJDBC;
 import br.com.mnbebidas.entities.PaymentClass;
 import br.com.mnbebidas.repositories.interfaces.AppRepository;
 
@@ -19,11 +21,10 @@ public class AppPaymentJDBC implements AppRepository<PaymentClass> {
 	}
 
 	@Override
-	public void inserir(PaymentClass entidade) throws SQLException {
+	public void inserir(PaymentClass entidade) throws SQLException, IOException {
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			PreparedStatement comando = con
 					.prepareStatement("INSERT INTO tblPayment (cd_TypePay,cd_Sale,noParcialValue) VALUES (?,?,?);");
 			comando.setInt(1, entidade.getCdTypePay());

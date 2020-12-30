@@ -28,10 +28,7 @@ CREATE TABLE tblCashier (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   );
-select
-  *
-from
-  tblcashier;
+
 ALTER TABLE
   tblCashier
 ADD

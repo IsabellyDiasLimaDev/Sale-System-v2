@@ -1,5 +1,6 @@
 package application.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -77,7 +78,12 @@ public class ProductController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.tableProduct.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-		loadListProduct();
+		try {
+			loadListProduct();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		enableEditing(false);
 
 		this.tableProduct.getSelectionModel().selectedItemProperty().addListener((obs, oldProduct, newProduct) -> {
@@ -115,7 +121,7 @@ public class ProductController implements Initializable {
 		return localDate;
 	}
 
-	public void loadListProduct() {
+	public void loadListProduct() throws IOException {
 		try {
 			AppRepository<ProductClass> productRepository = new AppProductJDBC();
 			products = productRepository.selecionar();
@@ -126,7 +132,7 @@ public class ProductController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro ao obter a lista de usuários: " + e.getMessage());
+			mensagem.setContentText("Houve um erro ao obter a lista de usuï¿½rios: " + e.getMessage());
 			mensagem.showAndWait();
 		}
 	}
@@ -159,7 +165,7 @@ public class ProductController implements Initializable {
 		}
 	}
 
-	public void createProduct() {
+	public void createProduct() throws IOException {
 		AppRepository<ProductClass> repositoryProduct = new AppProductJDBC();
 		ProductClass product = new ProductClass();
 		try {
@@ -209,18 +215,18 @@ public class ProductController implements Initializable {
 		}
 	}
 
-	public void buttonDelete_Action() throws SQLException {
+	public void buttonDelete_Action() throws SQLException, IOException {
 		this.isCreate = false;
 		enableEditing(true);
 		deleteProduct();
 	}
 
-	public void deleteProduct() throws SQLException {
+	public void deleteProduct() throws SQLException, IOException {
 		AppRepository<ProductClass> repositoryProduct = new AppProductJDBC();
 		int id = Integer.parseInt(txtfId.getText());
 		Alert mensagem = new Alert(AlertType.WARNING);
-		mensagem.setTitle("Atenção!");
-		mensagem.setHeaderText("Exclusão de produto");
+		mensagem.setTitle("Atenï¿½ï¿½o!");
+		mensagem.setHeaderText("Exclusï¿½o de produto");
 		mensagem.setContentText("Tem certeza que deseja excluir este produto?");
 		Optional<ButtonType> result = mensagem.showAndWait();
 		if (result.isPresent() && result.get() == ButtonType.OK) {

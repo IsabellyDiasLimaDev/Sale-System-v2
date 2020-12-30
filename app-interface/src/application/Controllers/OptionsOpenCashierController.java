@@ -1,5 +1,6 @@
 package application.Controllers;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -22,7 +23,7 @@ public class OptionsOpenCashierController {
 	@FXML
 	private Label lbl;
 
-	public void closeCashier() throws SQLException {
+	public void closeCashier() throws SQLException, IOException {
 		// atualizar a instancia do caixa para caixa fechado
 		CashierSession cashier = CashierSession.getInstace();
 		cashier.setClosing(true);
@@ -40,7 +41,7 @@ public class OptionsOpenCashierController {
 
 	}
 	
-	public void returnSale(){
+	public void returnSale() throws IOException{
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
 		try {
 			boolean isActive = new AppCashierJDBC().verifyDate(date, UserSession.getInstace().getCdLogin());
@@ -50,8 +51,8 @@ public class OptionsOpenCashierController {
 			else {
 				Alert mensagem = new Alert(AlertType.ERROR);
 				mensagem.setTitle("Erro!");
-				mensagem.setHeaderText("Sessão entre caixa e usuário");
-				mensagem.setContentText("Esta sessão não correponde a este dia, for favor feche o caixa e abra uma nova sessão!");
+				mensagem.setHeaderText("Sessï¿½o entre caixa e usuï¿½rio");
+				mensagem.setContentText("Esta sessï¿½o nï¿½o correponde a este dia, for favor feche o caixa e abra uma nova sessï¿½o!");
 				mensagem.showAndWait();
 			}
 		} catch (IllegalStateException e) {

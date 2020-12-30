@@ -1,5 +1,6 @@
 package application.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -30,17 +31,27 @@ public class SaleController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		loadSaleTable();
+		try {
+			loadSaleTable();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.tableSale.getSelectionModel().selectedItemProperty().addListener((obs,oldProduct,newProduct)->{
 			if(newProduct != null) {
 				this.selectedProduct = newProduct;
-				loadProductsSale();
+				try {
+					loadProductsSale();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				System.out.println(this.selectedProduct.getCdSale());
 			}
 		});
 	}
 	
-	public void loadSaleTable() {
+	public void loadSaleTable() throws IOException {
 		try {
 			AppSaleJDBC repositorySale = new AppSaleJDBC();
 			List<SaleViewClass> sales = repositorySale.select();
@@ -51,12 +62,12 @@ public class SaleController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro ao obter a lista de usuários: " + e.getMessage());
+			mensagem.setContentText("Houve um erro ao obter a lista de usuï¿½rios: " + e.getMessage());
 			mensagem.showAndWait();
 		}
 	}
 	
-	public void loadProductsSale() {
+	public void loadProductsSale() throws IOException {
 		try {
 			SaleProductJDBC saleRepository = new SaleProductJDBC();
 			if(this.selectedProduct != null) {
@@ -69,7 +80,7 @@ public class SaleController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro ao obter a lista de usuários: " + e.getMessage());
+			mensagem.setContentText("Houve um erro ao obter a lista de usuï¿½rios: " + e.getMessage());
 			mensagem.showAndWait();
 		}
 	}

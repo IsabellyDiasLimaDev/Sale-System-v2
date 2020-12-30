@@ -1,5 +1,6 @@
 package application.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -74,8 +75,13 @@ public class UserController implements Initializable {
 				this.seletedUser = newUser;
 			}
 		});
-		loadUserTable();
-		typeCombo.getItems().addAll("Administrador", "Funcionário");
+		try {
+			loadUserTable();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		typeCombo.getItems().addAll("Administrador", "Funcionï¿½rio");
 		statusCombo.getItems().addAll("Ativo", "Inativo");
 		statusCombo.setDisable(true);
 
@@ -104,20 +110,20 @@ public class UserController implements Initializable {
 		statusCombo.setDisable(false);
 	}
 
-	public void buttonDelete_Action() {
+	public void buttonDelete_Action() throws IOException {
 		this.isCreate = false;
 		enableEditing(true);
 		deleteUser();
 	}
 
-	public void deleteUser() {
+	public void deleteUser() throws IOException {
 		try {
 			AppRepository<UserClass> repositoryUser = new AppUserJDBC();
 			int id = Integer.parseInt(txtfId.getText());
 			Alert mensagem = new Alert(AlertType.WARNING);
-			mensagem.setTitle("Atenção!");
-			mensagem.setHeaderText("Exclusão de usuário");
-			mensagem.setContentText("Tem certeza que deseja excluir este usuário?");
+			mensagem.setTitle("Atenï¿½ï¿½o!");
+			mensagem.setHeaderText("Exclusï¿½o de usuï¿½rio");
+			mensagem.setContentText("Tem certeza que deseja excluir este usuï¿½rio?");
 			Optional<ButtonType> result = mensagem.showAndWait();
 			if (result.isPresent() && result.get() == ButtonType.OK) {
 				repositoryUser.excluir(id);
@@ -133,7 +139,7 @@ public class UserController implements Initializable {
 		}
 	}
 
-	public void loadUserTable() {
+	public void loadUserTable() throws IOException {
 		try {
 			AppRepository<UserClass> repositoryUser = new AppUserJDBC();
 			List<UserClass> users = repositoryUser.selecionar();
@@ -144,7 +150,7 @@ public class UserController implements Initializable {
 			Alert mensagem = new Alert(AlertType.ERROR);
 			mensagem.setTitle("Erro!");
 			mensagem.setHeaderText("Erro no banco de dados");
-			mensagem.setContentText("Houve um erro ao obter a lista de usuários: " + e.getMessage());
+			mensagem.setContentText("Houve um erro ao obter a lista de usuï¿½rios: " + e.getMessage());
 			mensagem.showAndWait();
 		}
 	}

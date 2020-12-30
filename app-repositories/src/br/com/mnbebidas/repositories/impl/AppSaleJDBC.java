@@ -1,5 +1,6 @@
 package br.com.mnbebidas.repositories.impl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.mnbebidas.connection.ConnectionJDBC;
 import br.com.mnbebidas.entities.SaleClass;
 import br.com.mnbebidas.entities.SaleSession;
 import br.com.mnbebidas.entities.SaleViewClass;
@@ -23,7 +25,7 @@ public class AppSaleJDBC implements AppRepository<SaleClass> {
 		return null;
 	}
 
-	public List<SaleViewClass> select() throws SQLException {
+	public List<SaleViewClass> select() throws SQLException, IOException {
 		Connection con = null;
 		List<SaleViewClass> sales = new ArrayList<SaleViewClass>();
 		String sql = "SELECT tblSale.cdSale,\r\n" + "tblSale.noQuantityTotal,\r\n" + "tblSale.noTotalValue,\r\n"
@@ -32,8 +34,7 @@ public class AppSaleJDBC implements AppRepository<SaleClass> {
 				+ "INNER JOIN tblLogin ON tblSale.cd_Login = tblLogin.cdLogin)\r\n"
 				+ "INNER JOIN tblCashier ON  tblsale.cd_Cashier = tblcashier.cdCashier);";
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			Statement comando = con.createStatement();
 			ResultSet rs = comando.executeQuery(sql);
 			while (rs.next()) {
@@ -52,11 +53,10 @@ public class AppSaleJDBC implements AppRepository<SaleClass> {
 	}
 
 	@Override
-	public void inserir(SaleClass entidade) throws SQLException {
+	public void inserir(SaleClass entidade) throws SQLException, IOException {
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			PreparedStatement comando = con.prepareStatement(
 					"INSERT INTO tblSale (cd_Login,cd_Cashier,cd_TypePay,noQuantityTotal,noTotalValue) VALUES (?,?,?,?,?);");
 			comando.setInt(1, entidade.getCdLogin());
@@ -86,14 +86,13 @@ public class AppSaleJDBC implements AppRepository<SaleClass> {
 
 	}
 
-	public void getId(int cdLogin) throws SQLException {
+	public void getId(int cdLogin) throws SQLException, IOException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "SELECT MAX(cdSale) as 'cdSale' from tblSale WHERE cd_Login = ?";
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpdv?useTimezone=true&serverTimezone=UTC",
-					"root", "Dias042012");
+			con = ConnectionJDBC.createConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, cdLogin);
 			rs = ps.executeQuery();
