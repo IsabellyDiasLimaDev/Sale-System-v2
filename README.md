@@ -9,6 +9,7 @@
 # Ambiente
 
 * Você deve ter instalado a versão 11 do Java
+* MySQL - seja ele baixado ou container
 * Além disso deve baixar o sdk do JavaFx - https://gluonhq.com/products/javafx/ e o mysql connector em formato zip (platform independent) -> https://downloads.mysql.com/archives/c-j/
 * Ambos os arquivos que foram baixados em formato zip devem der descompactados e deixados em uma pasta que for melhor para você
 * É recomendável que você tenha uma IDE própria para o Java como Eclipse ou Intellij
